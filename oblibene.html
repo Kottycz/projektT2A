@@ -1,38 +1,55 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Kuchařka</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
 <header class="header">
-    <h1>Kuchařka</h1>
-</header>
+         <div class="logo">
+            <img src="assets/images/logo.png" alt="Logo" class="logo-img"> 
+            <h1>Kuchařka</h1> 
+        </div>
+    
 
-<nav class="navigation">
-    <ul>
-        <li><a href="index.html">Domů</a></li>
-        <li><a href="recepty.html">Recepty</a></li>
-        <li><a href="oblibene.html">Oblíbené</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-    </ul>
-</nav>
+   <nav class="navigation">
+            <ul>
+                <li><a href="index.html">Domů</a></li>
+                <li><a href="recepty.html">Recepty</a></li>
+                <li><a href="oblibene.html">Oblíbené</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+    </nav>
+    </header>
+    <main>
+        <h1>Oblíbené recepty</h1>
 
-<main>
-    <h1>Oblíbené recepty</h1>
+        <section class="recipes-grid">
 
-    <section class="recipes-grid">
+            <article class="recipe-card">
+                <img src="https://via.placeholder.com/300x200" alt="">
+                <h3>Kuře na paprice</h3>
+                <p>Tradiční český recept.</p>
+                <a href="recepty-detail.html">Zobrazit recept</a>
+            </article>
 
-        <article class="recipe-card">
-            <img src="https://via.placeholder.com/300x200" alt="">
-            <h3>Kuře na paprice</h3>
-            <p>Tradiční český recept.</p>
-            <a href="recepty-detail.html">Zobrazit recept</a>
-        </article>
+            <article class="recipe-card">
+                <img src="https://via.placeholder.com/300x200" alt="">
+                <h3>Svíčková</h3>
+                <p>Klasická česká kuchyně.</p>
+                <a href="recepty-detail.html">Zobrazit recept</a>
+            </article>
 
-        <article class="recipe-card">
-            <img src="https://via.placeholder.com/300x200" alt="">
-            <h3>Svíčková</h3>
-            <p>Klasická česká kuchyně.</p>
-            <a href="recepty-detail.html">Zobrazit recept</a>
-        </article>
+        </section>
+    </main>
 
-    </section>
-</main>
+    <footer class="footer">
+        <p>© 2026 Kuchařka</p>
+    </footer>
 
-<footer class="footer">
-    <p>© 2026 Kuchařka</p>
-</footer>
+</body>
+</html>
