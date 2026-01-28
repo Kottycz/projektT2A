@@ -4,3 +4,54 @@
         gap: 10px;
     }
 }
+@media (max-width: 900px) {
+  .recipe-categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .recipe-categories-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 900px) {
+  .recipe-categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .recipe-categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-categories-inner {
+    padding: 0 20px;
+  }
+}
+@media (max-width: 600px) {
+  .hero-search-box {
+    flex-direction: column;
+    border-radius: 24px;
+    gap: 12px;
+  }
+
+  .hero-search-box button {
+    width: 100%;
+  }
+
+  .search-icon {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .add-recipe-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .add-recipe-text p {
+    margin: 0 auto;
+  }
+}

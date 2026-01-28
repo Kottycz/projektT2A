@@ -11,8 +11,8 @@
 
     <header class="header">
         <div class="logo">
-            <img src="assets/images/logo.png" alt="Logo" class="logo-img"> 
-            <h1>Kuchařka</h1> 
+            <img src="assets/images/logo2.png" alt="Logo" class="logo-img"> 
+            <h1>Kottyho kuchařka</h1> 
         </div>
 
         <nav class="navigation">
@@ -26,53 +26,169 @@
         
     </header>
 
-    <section class="hero">
-        <h2>Vařte s chutí</h2>
-        <p>Jednoduché recepty pro každý den</p>
-    </section>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>
+                Objevte kouzlo<br>
+                <span>domácí kuchyně</span>
+                </h1>
+
+                <p>
+                Vítejte v naší online kuchařce! Najděte inspiraci mezi stovkami
+                receptů pro každou příležitost.
+                </p>
+
+                <a href="recepty.html" class="btn-primary">
+                Procházet recepty →
+                </a>
+            </div>
+        </section>
+
+        <form class="hero-search" action="recepty.html" method="get">
+            <div class="hero-search-box">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M21 21l-4.35-4.35m1.85-5.65a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+
+                <input
+                type="text"
+                name="q"
+                placeholder="Co si dnes uvaříme?"
+                aria-label="Vyhledávání receptů"
+                >
+
+                <button type="submit">Hledat</button>
+            </div>
+            </form>
+
  
     <main>
-        <h1 class="section-title">Recepty</h1>
-        <h2 class="subsection-title">Nejnovější recepty</h2>
+<section class="recommended-label">
+  
+      <h2>Doporučené recepty</h2>
+      <p>Vyzkoušejte naše nejoblíbenější recepty</p>
 
-        <section class="recipes">
-            
-             <article class="recipe-card">
-        <img src="https://via.placeholder.com/300x200" alt="">
-        <h3>Kuře na paprice</h3>
-        <p>Tradiční český recept.</p>
-        <a href="recepty-detail.html">Zobrazit recept</a>
-    </article>
-
-    <article class="recipe-card">
-        <img src="https://via.placeholder.com/300x200" alt="">
-        <h3>Svíčková</h3>
-        <p>Klasická česká kuchyně.</p>
-        <a href="#">Zobrazit recept</a>
-    </article>
-
-        </section>
-    </main>
-
-    <section class="categories">
-        <h2>Kategorie receptů</h2>
-
-        <div class="categories-grid">
-            <a href="recepty/polevky.html">Polévky</a>
-            <a href="recepty/hlavni-jidla.html">Hlavní jídla</a>
-            <a href="recepty/dezerty.html">Dezerty</a>
-            <a href="recepty/salaty.html">Saláty</a>
-            <a href="recepty/testoviny.html">Těstoviny</a>
-            <a href="recepty/snidane.html">Snídaně</a>
-        </div>
-    </section>
-
-    <section class="add-new-recipe">
-        <h2>Přidej jsi vlastní recept</h2>
+</section> 
+      
+      <section class="recommended">
         
-        <a href="pridat-recept.html">Přidat recept</a>
+          <div class="recipes-grid">
 
-    </section>
+  <a href="recepty-detail.html">
+    <article class="recipe-card">
+      <img src="assets/images/thajska-rajcatova-polevka.jpg" alt="Domácí rajská polévka">
+     
+      <div class="recipe-content">
+        <h3>Domácí rajská polévka</h3>
+        <p>Krémová rajská polévka s čerstvou bazalkou a křupavým chlebem.</p>
+        <div class="recipe-meta">
+          <span>⏱ 35 min</span>
+          <span>👥 4 porce</span>
+          <span>⭐ Snadná</span>
+        </div>
+
+      </div>
+    </article>
+  </a>
+
+  <a href="recepty-detail.html">
+    <article class="recipe-card">
+      <img src="assets/images/rizoto.jpg" alt="Krémové kuřecí rizoto">
+
+      <div class="recipe-content">
+        <h3>Krémové kuřecí rizoto</h3>
+        <p>Italské rizoto s kuřecím masem, parmezánem a čerstvými bylinkami.</p>
+        <div class="recipe-meta">
+          <span>⏱ 45 min</span>
+          <span>👥 4 porce</span>
+          <span>⭐ Střední</span>
+        </div>
+
+      </div>
+    </article>
+  </a>
+
+  <a href="recepty-detail.html">
+    <article class="recipe-card">
+      <img src="assets/images/fondan.jpeg" alt="Čokoládový fondant">
+
+      <div class="recipe-content">
+        <h3>Čokoládový fondant</h3>
+        <p>Luxusní čokoládový dezert s tekutým středem, podávaný s vanilkovou zmrzlinou.</p>
+        <div class="recipe-meta">
+          <span>⏱ 25 min</span>
+          <span>👥 4 porce</span>
+          <span>⭐ Střední</span>
+        </div>
+
+      </div>
+    </article>
+  </a>
+
+</div>
+
+</section>
+
+    </main>
+<section class="recipe-categories">
+  <div class="recipe-categories-inner">
+
+    <h2>Kategorie receptů</h2>
+
+    <div class="recipe-categories-grid">
+      <a href="recepty-typy/polevky.html" class="recipe-category">
+        <img src="assets/images/polevky.jpeg" alt="Polévky">
+        <span>Polévky</span>
+      </a>
+
+      <a href="recepty-typy/hlavni-jidla.html" class="recipe-category">
+        <img src="assets/images/hlavni-jidla.jpeg" alt="Hlavní jídla">
+        <span>Hlavní jídla</span>
+      </a>
+
+      <a href="recepty-typy/dezerty.html" class="recipe-category">
+        <img src="assets/images/dezerty.jpg" alt="Dezerty">
+        <span>Dezerty</span>
+      </a>
+
+      <a href="recepty-typy/salaty.html" class="recipe-category">
+        <img src="assets/images/salaty.jpeg" alt="Saláty">
+        <span>Saláty</span>
+      </a>
+
+      <a href="recepty-typy/testoviny.html" class="recipe-category">
+        <img src="assets/images/testoviny.jpg" alt="Těstoviny">
+        <span>Těstoviny</span>
+      </a>
+
+      <a href="recepty-typy/snidane.html" class="recipe-category">
+        <img src="assets/images/snidane.jpg" alt="Snídaně">
+        <span>Snídaně</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+  <section class="add-recipe-cta">
+  <div class="add-recipe-inner">
+
+    <div class="add-recipe-text">
+      <h2>Přidej svůj vlastní recept</h2>
+      <p>
+        Máš oblíbený recept, který stojí za sdílení?
+        Přidej ho a inspiruj ostatní.
+      </p>
+    </div>
+
+    <a href="pridat-recept.html" class="add-recipe-button">
+      Přidat recept →
+    </a>
+
+  </div>
+</section>
 
     <footer class="footer">
         <p>© 2026 Kuchařka</p>

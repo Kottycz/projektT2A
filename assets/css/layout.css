@@ -1,16 +1,15 @@
-
 .header {
   position: fixed;
-  min-width: 100% ;
+  top: 0;        /* Přidej toto, aby byla hlavička úplně nahoře */
+  left: 0;       /* Přidej toto, aby začínala od levého kraje */
+  width: 100%;   /* Použij raději width místo min-width */
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; /* Tohle roztáhne logo a menu ke krajům */
+  align-items: center;            /* Vycentruje je to vertikálně */
+  padding: 16px 32px;
   background: var(--primary);
-  color: var(--white);
-  min-height: 20px;
-
+  z-index: 100;
 }
-
 .logo {
   display: flex;
   align-items: center;
@@ -26,17 +25,42 @@
 }
 
 .navigation a {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
   font-weight: bold;
 }
+.categories-grid {
+  display: flex; 
+  flex-wrap: wrap; /* pokud jich je víc, přeskočí na další řádek */ 
+  gap: 10px; /* mezery mezi tlačítky */ 
+  justify-content: center; /* nebo space-between / start / end */
+  margin-top: 20px;
+}
+
+.categories-grid a {
+  padding: 16px 20px;
+  background: #ffffff;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+}
+
+.categories-grid a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+  color: #e2750e;
+}
+
+
 
 
 main {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-
+  max-width: 1200px; /* Nastaví maximální šířku obsahu */
+  margin: 100px auto 40px auto; /* 'auto' na stranách zajistí vycentrování */
+  padding: 0 20px;   /* Aby text nebyl úplně nalepený na hranu u mobilů */
 }
    
 html, body {
@@ -50,7 +74,7 @@ main {
 }
 
 .footer {
-  background: var(--primary);
+  background: #f3ece2;
   color: var(--white);
   text-align: center;
   padding: 20px;

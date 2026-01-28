@@ -23,20 +23,26 @@
             </ul>
     </nav>
     </header>
-    <main>
+  <main class="contact-page">
+    <section class="contact-container">
         <h1>Kontakt</h1>
+        
+        <div class="contact-info">
+            <p><strong>Email:</strong> info@kucharka.cz</p>
+            <p><strong>Telefon:</strong> +420 123 456 789</p>
+            <p><strong>Adresa:</strong> Ulice 1, 110 00 Praha</p>
+        </div>
 
-        <p>Email: info@kucharka.cz</p>
-        <p>Telefon: 123 456 789</p>
-        <p>Adresa: Ulice 1, Praha</p>
-
-        <form>
-            <input type="text" placeholder="Jméno">
-            <input type="email" placeholder="E-mail">
-            <textarea placeholder="Zpráva"></textarea>
-            <button>Odeslat</button>
+        <form class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Vaše jméno" required>
+                <input type="email" placeholder="Váš e-mail" required>
+            </div>
+            <textarea placeholder="Vaše zpráva" rows="5" required></textarea>
+            <button type="submit" class="btn-submit">Odeslat zprávu</button>
         </form>
-    </main>
+    </section>
+</main>
 
     <footer class="footer">
         <p>© 2026 Kuchařka</p>
