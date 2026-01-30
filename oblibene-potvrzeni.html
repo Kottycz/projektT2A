@@ -2,41 +2,42 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Kuchařka</title>
-
-    <!-- CSS -->
+    <title>Recept přidán – Kottyho kuchařka</title>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
 
     <header class="header">
-         <div class="logo">
+        <div class="logo">
             <img src="assets/images/logo2.png" alt="Logo" class="logo-img"> 
             <h1>Kottyho kuchařka</h1> 
         </div>
-    
-
-   <nav class="navigation">
+        <nav class="navigation">
             <ul>
                 <li><a href="index.html">Domů</a></li>
                 <li><a href="recepty.html">Recepty</a></li>
                 <li><a href="oblibene.html">Oblíbené</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
             </ul>
-    </nav>
+        </nav>
     </header>
 
     <main>
-        <h1>Recept byl úspěšně přidán do oblíbených</h1>
-
-        <p>Kuře na paprice</p>
-
-        <a href="oblibene.html">Zobrazit oblíbené recepty</a>
+        <div class="confirmation-container">
+            <div class="success-icon">❤️</div>
+            <h1>Recept byl úspěšně přidán do oblíbených</h1>
+            
+            
+            <div class="action-buttons">
+                <a href="oblibene.html" class="btn-primary">Zobrazit oblíbené recepty</a>
+                <a href="recepty.html" class="btn-secondary">Zpět na recepty</a>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
-        <p>© 2026 Kuchařka</p>
+        <p>© 2026 Kottyho kuchařka</p>
     </footer>
 
 </body>

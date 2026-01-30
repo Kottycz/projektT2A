@@ -25,17 +25,26 @@
     </header>
 
     <main>
+    <div class="add-recipe-container">
         <h1>Přidat nový recept</h1>
 
-        <form>
-            <input type="text" placeholder="Název receptu">
-            <textarea placeholder="Ingredience"></textarea>
-            <textarea placeholder="Postup"></textarea>
-            <input type="file">
-            <button>Uložit recept</button>
-        </form>
-    </main>
+        <form class="recipe-form">
+            <input type="text" placeholder="Název receptu" required>
+            <textarea placeholder="Ingredience (každou na nový řádek)" required></textarea>
+            <textarea placeholder="Postup přípravy" required></textarea>
+            
+            <div class="file-input-group">
+                <label for="file-upload" class="custom-file-upload">
+                    <span class="icon"></span> Vybrat fotografii jídla
+                </label>
+                <input id="file-upload" type="file" accept="image/*" onchange="updateFileName(this)">
+                <span id="file-name" class="file-name-display">Soubor nevybrán</span>
+            </div>
 
+            <button type="submit" class="btn-submit">Uložit recept</button>
+        </form>
+    </div>
+</main>
     <footer class="footer">
         <p>© 2026 Kuchařka</p>
     </footer>

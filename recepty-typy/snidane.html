@@ -2,53 +2,55 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Snídaně</title>
+    <title>Snídaně – Kottyho kuchařka</title>
     <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 
-<header class="header">
-     <div class="logo">
+    <header class="header">
+        <div class="logo">
             <img src="../assets/images/logo2.png" alt="Logo" class="logo-img"> 
             <h1>Kottyho kuchařka</h1> 
         </div>
+        <nav class="navigation">
+            <ul>
+                <li><a href="../index.html">Domů</a></li>
+                <li><a href="../recepty.html">Recepty</a></li>
+                <li><a href="../oblibene.html">Oblíbené</a></li>
+                <li><a href="../kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <nav class="navigation">
-        <ul>
-            <li><a href="../index.html">Domů</a></li>
-            <li><a href="../recepty.html">Recepty</a></li>
-            <li><a href="../oblibene.html">Oblíbené</a></li>
-            <li><a href="../kontakt.html">Kontakt</a></li>
-        </ul>
-    </nav>
-</header>
+    <main>
+        <section class="category-header">
+            <h1>Snídaně</h1>
+            <p>Recepty ideální na dobrý start dne.</p>
+        </section>
 
-<main>
-    <h1>Snídaně</h1>
-    <p>Recepty ideální na dobrý start dne.</p>
+        <section class="recipes-grid">
+            <a href="../recepty-detail/palacinky.html" class="recipe-card-link">
+                <article class="recipe-card">
+                    <img src="../assets/images/palacinky.jpg" alt="Palačinky">
 
-     <section class="recipes">
+                    <div class="recipe-content">
+                        <h3>Domácí palačinky</h3>
+                        <p>Tenké a vláčné palačinky, které miluje každý.</p>
+                        <div class="recipe-meta">
+                            <span>⏱ 20 min</span>
+                            <span>👥 4 porce</span>
+                            <span>⭐ Snadné</span>
+                        </div>
+                    </div>
+                </article>
+            </a>
+            
+            </section>
+    </main>
 
-    <a href="../recepty-detail/palacinky.html" class="recipe-card-link">
-        <article class="recipe-card">
-            <img src="../assets/images/palacinky.jpg" alt="Palačinky">
-            <div class="recipe-card-content">
-                <h3>Domácí palačinky</h3>
-                <p>Tenké a vláčné palačinky, které miluje každý.</p>
-                <div class="recipe-meta-mini">
-                    <span>⏱️ 20 min</span>
-                    <span>📊 Snadné</span>
-                </div>
-            </div>
-        </article>
-    </a>
-
-</section>
-</main>
-
-<footer class="footer">
-    <p>© 2026 Kuchařka</p>
-</footer>
+    <footer class="footer">
+        <p>© 2026 Kottyho kuchařka</p>
+    </footer>
 
 </body>
 </html>
