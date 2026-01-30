@@ -55,3 +55,12 @@
     margin: 0 auto;
   }
 }
+/* Responzivita pro mobily */
+@media (max-width: 600px) {
+    .form-group {
+        grid-template-columns: 1fr;
+    }
+    .contact-container {
+        padding: 30px;
+    }
+}

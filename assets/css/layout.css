@@ -57,26 +57,35 @@
 
 
 
-main {
-  max-width: 1200px; /* Nastaví maximální šířku obsahu */
-  margin: 100px auto 40px auto; /* 'auto' na stranách zajistí vycentrování */
-  padding: 0 20px;   /* Aby text nebyl úplně nalepený na hranu u mobilů */
-}
-   
+/* 1. Nastav výšku pro úplně všechno */
 html, body {
   height: 100%;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-main {
-  flex: 1;
 }
 
+/* 2. Udělej z body flexbox, který vyplní celou obrazovku */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Zásadní: tělo musí mít aspoň 100 % výšky okna */
+}
+
+/* 3. Main musí "tlačit" */
+main {
+  flex: 1 0 auto; /* Tohle roztáhne prostředek a odsunu footer dolů */
+  width: 100%;
+  max-width: 1200px;
+  margin: 100px auto 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* 4. Footer nesmí uhýbat */
 .footer {
+  flex-shrink: 0; /* Zabrání zmenšení patičky */
   background: #f3ece2;
-  color: var(--white);
+  color: #5d4037; /* Tmavá barva, aby byla vidět */
   text-align: center;
   padding: 20px;
-  font-size: 0.9rem;
+  width: 100%;
 }
