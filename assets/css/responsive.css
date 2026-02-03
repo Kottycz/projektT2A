@@ -1,180 +1,227 @@
-/* =========================================
-   14. RESPONZIVITA (MEDIA QUERIES)
-   Tento kód vložte na úplný konec style.css
-   ========================================= */
+@media (max-width: 768px) {
 
-/* --- TABLETY A MENŠÍ LAPTOPY (pod 1024px) --- */
+  /* ===== HLAVIČKA ===== */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+
+  .navigation ul {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: auto;
+    padding: 100px 20px 60px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero-search-box {
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 20px;
+  }
+
+  .hero-search-box input,
+  .hero-search-box button {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  /* ===== GRIDY ===== */
+  .recipes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ===== CTA SEKCE ===== */
+  .add-recipe-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* ===== DETAIL RECEPTU ===== */
+  .recipe-content-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .recipe-image-wrapper {
+    height: 300px;
+  }
+
+  .recipe-meta-strip {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* ===== FORMULÁŘE ===== */
+  .form-group {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-container,
+  .recipe-container {
+    padding: 30px 20px;
+  }
+}
 @media (max-width: 1024px) {
-    
-    /* Změna hlavní mřížky z 3 sloupců na 2 */
-    .recipes-grid,
-    .recipe-categories-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* 2 karty vedle sebe */
-        padding: 0 40px; /* Větší odsazení od krajů */
-    }
 
-    /* CTA sekce (Přidat recept) - zmenšení paddingu */
-    .add-recipe-inner {
-        padding: 0 20px;
-    }
-}
+  .hero h1 {
+    font-size: 2.4rem;
+  }
 
-/* --- MOBILNÍ ZAŘÍZENÍ (pod 768px) --- */
-@media (max-width: 768px) {
+  .recipes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    /* 1. HERO SEKCE */
-    .hero {
-        min-height: 60vh; /* Menší výška banneru na mobilu */
-        padding: 0 20px;
-    }
+  .recipe-categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    .hero h1 {
-        font-size: 2.2rem; /* Menší nadpis */
-    }
+  .add-recipe-inner {
+    padding: 0 20px;
+  }
 
-    /* Vyhledávací pole se přizpůsobí */
-    .hero-search-box {
-        padding: 5px 5px 5px 15px; /* Méně místa uvnitř */
-    }
-    
-    .hero-search-box button {
-        padding: 10px 20px; /* Menší tlačítko */
-    }
-
-    /* 2. MŘÍŽKY (GRIDY) - Všechno pod sebe */
-    .recipes-grid,
-    .recipe-categories-grid {
-        grid-template-columns: 1fr !important; /* 1 karta přes celou šířku */
-        gap: 25px;
-        padding: 0 15px; /* Menší okraje */
-    }
-
-    /* Oprava kategorií receptů (ten béžový pruh) */
-    .recipe-categories {
-        margin: 60px 0 !important; /* Menší odsazení sekce */
-        padding: 40px 0 !important;
-    }
-    
-    .recipe-category {
-        height: 200px; /* O něco nižší karta na mobilu */
-    }
-
-    /* 3. CTA SEKCE (PŘIDAT RECEPT) */
-    .add-recipe-inner {
-        flex-direction: column; /* Text a tlačítko pod sebe */
-        text-align: center;
-        gap: 30px;
-    }
-
-    .add-recipe-text p {
-        margin: 0 auto; /* Vycentrování textu */
-    }
-
-    /* 4. KONTAKTNÍ STRÁNKA */
-    .contact-container {
-        padding: 30px 20px; /* Méně vaty uvnitř */
-    }
-
-    .form-group {
-        grid-template-columns: 1fr; /* Jméno a email pod sebe, ne vedle sebe */
-    }
-
-    /* 5. DETAIL RECEPTU */
-    .recipe-container {
-        padding: 30px 20px;
-    }
-
-    .recipe-header h1 {
-        font-size: 28px;
-    }
-
-    .recipe-image-wrapper {
-        height: 300px; /* Menší výška hlavního obrázku */
-    }
-
-    /* Info lišta (Čas, porce...) */
-    .recipe-meta-strip {
-        flex-wrap: wrap; /* Umožní zalomení, kdyby se nevešlo */
-        gap: 20px;
-    }
-
-    /* Rozdělení Ingredience vs Postup */
-    .recipe-content-grid {
-        grid-template-columns: 1fr; /* Pod sebe */
-        gap: 40px;
-    }
-    
-    /* Specifická oprava pro váš obrázek v detailu */
-    .recipe-detail-container img {
-        max-width: 100% !important; /* Aby obrázek nepřetekl šířku mobilu */
-        height: auto !important; /* Výška se dopočítá */
-    }
-
-    .recipe-actions {
-        flex-direction: column; /* Tlačítka pod sebe */
-        width: 100%;
-    }
-    
-    .btn-favorite, .btn-print { 
-        width: 100%; /* Tlačítka přes celou šířku */
-        text-align: center;
-    }
-
-    /* 6. FORMULÁŘ PRO PŘIDÁNÍ RECEPTU */
-    .add-recipe-container {
-        padding: 20px;
-        margin: 20px auto;
-    }
-    
-    .btn-submit {
-        width: 100%; /* Tlačítko Odeslat přes celou šířku */
-    }
+  main {
+    margin-top: 120px;
+  }
 }
 @media (max-width: 768px) {
-    .hero {
-        /* Toto natvrdo nastaví výšku na 300 pixelů - víc to nepustí */
-        height: 300px !important;
-        min-height: 300px !important;
-        
-        /* Zmenšíme vnitřní prostor, aby se tam text vešel */
-        padding: 20px !important;
-        
-        /* Zarovnáme vše na střed, aby to v tom malém okně vypadalo dobře */
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-    }
 
-    .hero-content {
-        padding: 0 !important;
-        margin: 0 !important;
-    }
+  /* ====== ZÁKLAD ====== */
+  body {
+    overflow-x: hidden;
+  }
 
-    .hero h1 {
-        font-size: 1.6rem !important; /* Výrazně menší nadpis */
-        margin-bottom: 5px !important;
-    }
+  main {
+    margin: 90px 0 40px 0;
+    padding: 0 16px;
+    max-width: 100%;
+  }
 
-    .hero p {
-        font-size: 0.85rem !important; /* Menší doprovodný text */
-        margin-bottom: 10px !important;
-        /* Skryje příliš dlouhý text, aby nepřetékal z malého obrázku */
-        line-clamp: 2;
-        -webkit-line-clamp: 2; 
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
+  /* ====== HLAVIČKA ====== */
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 16px;
+  }
 
-    .btn-primary {
-        padding: 8px 16px !important; /* Menší tlačítko */
-        font-size: 0.85rem !important;
-    }
+  .logo h1 {
+    font-size: 20px;
+  }
 
-    /* Pokud tam máte vyhledávání (search box), na mobilu v takto malém 
-       hero ho raději úplně skryjte nebo mu dejte minimální rozměry */
-    .hero-search {
-        display: none !important; 
-    }
+  .navigation ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0 0 0;
+  }
+
+  /* ====== HERO ====== */
+  .hero {
+    padding: 80px 16px 50px;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* SEARCH – pilulka pryč */
+  .hero-search-box {
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .hero-search-box input,
+  .hero-search-box button {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  /* ====== GRIDY ====== */
+  .recipes-grid,
+  .recipe-categories-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  /* ====== KARTY ====== */
+  .recipe-card img {
+    height: 180px;
+  }
+
+  .recipe-content {
+    padding: 18px;
+  }
+
+  /* ====== KATEGORIE ====== */
+  .recipe-category {
+    height: 180px;
+  }
+
+  .recipe-category span {
+    font-size: 20px;
+  }
+
+  /* ====== CTA ====== */
+  .add-recipe-inner {
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  /* ====== DETAIL RECEPTU ====== */
+  .recipe-image-wrapper {
+    height: 260px;
+  }
+
+  .recipe-meta-strip {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .recipe-content-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  /* ====== FORMULÁŘE ====== */
+  .form-group {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-container,
+  .recipe-container {
+    padding: 24px 16px;
+  }
 }
