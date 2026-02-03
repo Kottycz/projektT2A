@@ -346,6 +346,51 @@ a {
   font-size: 26px;
   font-weight: 600;
 }
+/* 1. Karta kategorie - přidáme mírný stín při najetí */
+.recipe-category {
+  position: relative;
+  height: 230px;
+  border-radius: 22px;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Plynulý pohyb celé karty */
+}
+
+.recipe-category:hover {
+  transform: translateY(-5px); /* Karta lehce nadskočí */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Přidá stín pod kartu */
+}
+
+/* 2. Obrázek - zvětšení (scale) */
+.recipe-category img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease; /* Tohle už tam máš, super! */
+}
+
+.recipe-category:hover img {
+  transform: scale(1.1); /* Obrázek se při najetí zvětší o 10% */
+}
+
+/* 3. Text (span) - ztmavení pozadí při najetí */
+.recipe-category span {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* Základní ztmavení */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 600;
+  transition: background 0.45s ease; /* Plynulé ztmavení pozadí */
+}
+
+.recipe-category:hover span {
+  background: rgba(0, 0, 0, 0.6); /* Při najetí pozadí více ztmavne */
+}
 
 /* =========================================
    7. CTA SEKCE (PŘIDAT RECEPT)
