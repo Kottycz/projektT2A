@@ -1,87 +1,14 @@
-@media (max-width: 768px) {
+/* ================================
+   📱 MOBILNÍ RESPONZIVITA
+   ================================ */
 
-  /* ===== HLAVIČKA ===== */
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 20px;
-  }
-
-  .navigation ul {
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  /* ===== HERO ===== */
-  .hero {
-    min-height: auto;
-    padding: 100px 20px 60px;
-    text-align: center;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .hero-search-box {
-    flex-direction: column;
-    gap: 10px;
-    border-radius: 20px;
-  }
-
-  .hero-search-box input,
-  .hero-search-box button {
-    width: 100%;
-    border-radius: 12px;
-  }
-
-  /* ===== GRIDY ===== */
-  .recipes-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .recipe-categories-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* ===== CTA SEKCE ===== */
-  .add-recipe-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  /* ===== DETAIL RECEPTU ===== */
-  .recipe-content-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .recipe-image-wrapper {
-    height: 300px;
-  }
-
-  .recipe-meta-strip {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  /* ===== FORMULÁŘE ===== */
-  .form-group {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-container,
-  .recipe-container {
-    padding: 30px 20px;
-  }
-}
+/* ===== TABLET A MENŠÍ DESKTOP ===== */
 @media (max-width: 1024px) {
+
+  .hero {
+    min-height: 70vh;
+    padding: 0 6%;
+  }
 
   .hero h1 {
     font-size: 2.4rem;
@@ -96,48 +23,28 @@
   }
 
   .add-recipe-inner {
-    padding: 0 20px;
-  }
-
-  main {
-    margin-top: 120px;
+    flex-direction: column;
+    text-align: center;
   }
 }
+
+
+/* ===== MOBIL ===== */
 @media (max-width: 768px) {
 
-  /* ====== ZÁKLAD ====== */
-  body {
-    overflow-x: hidden;
-  }
-
-  main {
-    margin: 90px 0 40px 0;
-    padding: 0 16px;
-    max-width: 100%;
-  }
-
-  /* ====== HLAVIČKA ====== */
+  /* HEADER */
   .header {
-    flex-direction: column;
-    align-items: center;
-    padding: 12px 16px;
-  }
-
-  .logo h1 {
-    font-size: 20px;
+    padding: 14px 20px;
   }
 
   .navigation ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin: 10px 0 0 0;
+    display: none;
   }
 
-  /* ====== HERO ====== */
+  /* HERO */
   .hero {
-    padding: 80px 16px 50px;
     min-height: auto;
+    padding: 120px 20px 80px;
     text-align: center;
   }
 
@@ -146,82 +53,124 @@
   }
 
   .hero h1 {
-    font-size: 1.9rem;
+    font-size: 2rem;
   }
 
   .hero p {
     font-size: 1rem;
   }
 
-  /* SEARCH – pilulka pryč */
+  /* HERO SEARCH */
+  .hero-search {
+    margin-top: 30px;
+  }
+
   .hero-search-box {
     flex-direction: column;
-    border-radius: 16px;
-    padding: 12px;
+    border-radius: 20px;
+    padding: 14px;
     gap: 10px;
   }
 
-  .hero-search-box input,
-  .hero-search-box button {
+  .hero-search-box input {
     width: 100%;
-    border-radius: 12px;
+    padding: 14px;
+    font-size: 15px;
   }
 
-  /* ====== GRIDY ====== */
-  .recipes-grid,
-  .recipe-categories-grid {
-    grid-template-columns: 1fr !important;
+  .hero-search-box button {
+    width: 100%;
+    padding: 14px;
+  }
+
+  /* RECEPTY GRID */
+  .recipes-grid {
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  /* ====== KARTY ====== */
-  .recipe-card img {
-    height: 180px;
+  /* KATEGORIE */
+  .recipe-categories {
+    padding: 60px 0;
   }
 
-  .recipe-content {
-    padding: 18px;
+  .recipe-categories h2 {
+    font-size: 26px;
   }
 
-  /* ====== KATEGORIE ====== */
+  .recipe-categories-grid {
+    grid-template-columns: 1fr;
+  }
+
   .recipe-category {
-    height: 180px;
+    height: 200px;
   }
 
-  .recipe-category span {
-    font-size: 20px;
+  /* CTA */
+  .add-recipe-cta {
+    padding: 70px 0;
   }
 
-  /* ====== CTA ====== */
-  .add-recipe-inner {
-    flex-direction: column;
-    gap: 25px;
-    text-align: center;
-    padding: 0 16px;
+  .add-recipe-text h2 {
+    font-size: 26px;
   }
 
-  /* ====== DETAIL RECEPTU ====== */
+  .add-recipe-text p {
+    font-size: 15px;
+  }
+
+  /* DETAIL RECEPTU */
+  .recipe-container {
+    padding: 30px 20px;
+  }
+
+  .recipe-header h1 {
+    font-size: 28px;
+  }
+
   .recipe-image-wrapper {
     height: 260px;
   }
 
   .recipe-meta-strip {
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
   }
 
   .recipe-content-grid {
     grid-template-columns: 1fr;
-    gap: 35px;
+    gap: 40px;
   }
 
-  /* ====== FORMULÁŘE ====== */
+  /* FORMULÁŘE */
   .form-group {
     grid-template-columns: 1fr;
   }
 
-  .contact-container,
-  .recipe-container {
-    padding: 24px 16px;
+  .contact-container {
+    padding: 40px 20px;
+  }
+}
+
+
+/* ===== MALÉ MOBILY ===== */
+@media (max-width: 480px) {
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .recipe-content h3 {
+    font-size: 1.15rem;
+  }
+
+  .btn-primary,
+  .btn-submit {
+    width: 100%;
+    text-align: center;
+  }
+
+  .confirmation-container {
+    padding: 30px 20px;
   }
 }
