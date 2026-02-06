@@ -686,6 +686,10 @@ a {
     background: #c957 /* (Původní kód zde byl neúplný, ale zachoval jsem ho) */
 }
 
+
+
+
+
 /* =========================================
    10. PŘIDÁNÍ RECEPTU (FORMULÁŘ)
    ========================================= */
@@ -701,7 +705,7 @@ a {
 
 .add-recipe-container h1 {
     text-align: center;
-    color: #5d4037;     /* Hnědá barva */
+    color: #000000;     /* Hnědá barva */
     margin-bottom: 30px;
     font-size: 2rem;
 }
@@ -716,7 +720,7 @@ a {
 .recipe-form textarea {
     width: 100%;
     padding: 15px;
-    border: 1px solid #e0d5c5; /* Béžový rámeček */
+    border: 1px solid #eec0a9; /* Béžový rámeček */
     border-radius: 8px;
     font-family: inherit;
     font-size: 1rem;
@@ -779,9 +783,9 @@ a {
     padding: 12px 20px;
     cursor: pointer;
     background-color: #fdfbf8;
-    border: 2px dashed #e0d5c5; /* Přerušovaná čára */
+    border: 2px dashed #eec0a9; /* Přerušovaná čára */
     border-radius: 8px;
-    color: #5d4037;
+    color: #000000;
     font-weight: 600;
     transition: all 0.3s ease;
     text-align: center;
@@ -803,6 +807,10 @@ a {
     font-style: italic;
 }
 
+
+
+
+
 /* =========================================
    11. POTVRZENÍ (SUCCESS PAGE)
    ========================================= */
@@ -823,7 +831,7 @@ a {
 }
 
 .confirmation-container h1 {
-    color: #5d4037;
+    color: #000000;
     font-size: 1.8rem;
     margin-bottom: 10px;
 }
@@ -858,7 +866,7 @@ a {
 }
 
 .btn-secondary {
-    color: #5d4037;
+    color: #000000;
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
@@ -869,6 +877,9 @@ a {
 .btn-secondary:hover {
     border-color: #e26a2c;
 }
+
+
+
 
 /* =========================================
    12. MINIMALISTICKÁ HLAVIČKA KATEGORIE
@@ -899,6 +910,9 @@ a {
     color: #666;
     font-style: italic;
 }
+
+
+
 /* =========================================
    13. FINÁLNÍ OPRAVA MŘÍŽKY RECEPTŮ
    ========================================= */
@@ -968,4 +982,41 @@ a {
     border-top: 1px solid #f0f0f0;
     font-size: 0.85rem;
     color: #888;
+}
+/* =========================================
+  14. STRÁNKA O NÁS 
+   ========================================= */
+
+/* Kontejner pro textový obsah o nás */
+.about-section {
+    max-width: 800px;      /* Omezení šířky, aby se text dobře četl */
+    margin: 80px auto;     /* Vycentrování a odstup od hlavičky */
+    padding: 40px;
+    background: #fff;      /* Bílé pozadí pro text */
+    border-radius: 20px;   /* Zakulacené rohy jako u receptů */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Jemný stín */
+    text-align: center;    /* Vycentrování textu */
+}
+
+/* Hlavní nadpis na stránce */
+.about-section h1 {
+    font-size: 38px;
+    color: #000000;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Styl pro odstavce textu */
+.about-section p {
+    font-size: 18px;
+    line-height: 1.8;      /* Větší řádkování pro lepší čitelnost */
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Zvýrazněný text (pokud ho v HTML použiješ) */
+.about-section .highlight {
+    color: #e26a2c;        /* Akcentní barva */
+    font-weight: 600;
 }
