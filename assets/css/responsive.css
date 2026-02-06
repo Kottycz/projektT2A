@@ -1,176 +1,197 @@
-/* ================================
-   📱 MOBILNÍ RESPONZIVITA
-   ================================ */
 
-/* ===== TABLET A MENŠÍ DESKTOP ===== */
-@media (max-width: 1024px) {
-
-  .hero {
-    min-height: 70vh;
-    padding: 0 6%;
-  }
-
-  .hero h1 {
-    font-size: 2.4rem;
-  }
-
-  .recipes-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .recipe-categories-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .add-recipe-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-
-/* ===== MOBIL ===== */
 @media (max-width: 768px) {
+    /* 1. Header: Musíme mu dát pevnou strukturu, aby název neutíkal */
+    .header {
+        background: #ffffff !important;
+        position: relative !important;
+        padding: 10px 15px !important;
+        display: flex !important;
+        flex-direction: column !important; /* Logo nahoře, menu pod ním */
+        align-items: center !important;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+        z-index: 100 !important;
+        width: 100% !important;
+    }
 
-  /* HEADER */
-  .header {
-    padding: 14px 20px;
-  }
+    /* 2. Logo sekce: Zamezíme přetékání textu */
+    .header .logo {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important; /* Vycentrujeme logo a název */
+        width: 100% !important;
+        margin-bottom: 8px !important;
+        gap: 10px !important;
+    }
 
-  .navigation ul {
-    display: none;
-  }
+    .header .logo-img {
+        height: 28px !important; /* Ještě o kousek menší, aby zbyl prostor pro text */
+        width: auto !important;
+    }
 
-  /* HERO */
-  .hero {
-    min-height: auto;
-    padding: 120px 20px 80px;
-    text-align: center;
-  }
+    .header .logo h1 {
+        font-size: 18px !important;
+        margin: 0 !important;
+        white-space: nowrap !important; /* Klíčové: text se nezlomí a zůstane v lince */
+    }
 
-  .hero-content {
-    max-width: 100%;
-  }
+    /* 3. Navigace: Uděláme ji jako tenký proužek */
+    .navigation {
+        width: 100% !important;
+    }
 
-  .hero h1 {
-    font-size: 2rem;
-  }
+    .navigation ul {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        padding: 0 !important;
+    }
 
-  .hero p {
-    font-size: 1rem;
-  }
+    .navigation ul li a {
+        padding: 5px 8px !important; /* Menší tlačítka šetří výšku */
+        font-size: 11px !important;
+        background: #f8f9fa !important;
+        border-radius: 4px !important;
+    }
 
-  /* HERO SEARCH */
-  .hero-search {
-    margin-top: 30px;
-  }
+    /* =========================================
+       HERO SEKCE - ČISTÝ MOBILNÍ VZHLED
+       ========================================= */
+    .hero {
+        min-height: 120px !important; /* Velmi nízký, elegantní profil */
+        height: 120px !important;
+        background-position: center !important;
+        background-size: cover !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: relative !important;
+    }
 
-  .hero-search-box {
-    flex-direction: column;
-    border-radius: 20px;
-    padding: 14px;
-    gap: 10px;
-  }
+    /* Ztmavíme pozadí banneru, aby bílý nadpis lépe svítil */
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.3); /* Jemný tmavý filtr */
+    }
 
-  .hero-search-box input {
-    width: 100%;
-    padding: 14px;
-    font-size: 15px;
-  }
+    .hero-content {
+        position: relative; /* Aby byl text nad filtrem */
+        z-index: 2;
+        text-align: center !important;
+        width: 100% !important;
+    }
 
-  .hero-search-box button {
-    width: 100%;
-    padding: 14px;
-  }
+    .hero h1 {
+        font-size: 1.1rem !important; /* Menší, čistý font */
+        color: #ffffff !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0 !important;
+    }
 
-  /* RECEPTY GRID */
-  .recipes-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+    /* ÚPLNÉ ODSTRANĚNÍ RUŠIVÝCH PRVKŮ NA MOBILU */
+    .hero p, 
+    .hero .btn-primary {
+        display: none !important; /* Tohle dělalo ten nepořádek */
+    }
 
-  /* KATEGORIE */
-  .recipe-categories {
-    padding: 60px 0;
-  }
+    /* VYHLEDÁVÁNÍ - TEĎ BUDE STŘEDOBODEM */
+    .hero-search {
+        margin-top: -22px !important; /* Krásně "připlácneme" k banneru */
+        padding: 0 15px !important;
+        position: relative;
+        z-index: 10;
+    }
 
-  .recipe-categories h2 {
-    font-size: 26px;
-  }
+    .hero-search-box {
+        height: 45px !important;
+        background: #ffffff !important;
+        border-radius: 50px !important; /* Kulatý Alza styl */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+        border: 1px solid #eee !important;
+    }
 
-  .recipe-categories-grid {
-    grid-template-columns: 1fr;
-  }
+    /* Zmenšíme nápis "Doporučené recepty", aby byl hned vidět */
+    .recommended-label {
+        padding: 35px 0 15px 0 !important;
+    }
 
-  .recipe-category {
-    height: 200px;
-  }
+    /* 4. MŘÍŽKA RECEPTŮ - Klíč k Alza stylu (Karty pod sebou nebo 2 vedle sebe) */
+    .recipes-grid {
+        grid-template-columns: 1fr; /* Jeden recept na řádek pro maximální přehlednost */
+        gap: 20px;
+        padding: 0 15px;
+    }
 
-  /* CTA */
-  .add-recipe-cta {
-    padding: 70px 0;
-  }
+    /* Pokud chceš 2 recepty vedle sebe (jako výpis zboží na Alze), použij:
+       grid-template-columns: 1fr 1fr; 
+    */
 
-  .add-recipe-text h2 {
-    font-size: 26px;
-  }
+    .recipe-card img {
+        height: 200px;
+    }
 
-  .add-recipe-text p {
-    font-size: 15px;
-  }
+    /* 5. KATEGORIE - 2 vedle sebe, aby se nemuselo tolik rolovat */
+    .recipe-categories-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 15px;
+        padding: 0 15px;
+    }
 
-  /* DETAIL RECEPTU */
-  .recipe-container {
-    padding: 30px 20px;
-  }
+    .recipe-category {
+        height: 140px; /* Nižší karty na mobilu */
+    }
 
-  .recipe-header h1 {
-    font-size: 28px;
-  }
+    .recipe-category span {
+        font-size: 18px;
+    }
 
-  .recipe-image-wrapper {
-    height: 260px;
-  }
+    /* 6. DETAIL RECEPTU - Texty pod sebe */
+    .recipe-content-grid {
+        grid-template-columns: 1fr; /* Ingredience a postup pod sebou */
+        gap: 30px;
+    }
 
-  .recipe-meta-strip {
-    flex-direction: column;
-    gap: 20px;
-  }
+    .recipe-image-wrapper {
+        height: 250px;
+    }
 
-  .recipe-content-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+    .recipe-meta-strip {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
 
-  /* FORMULÁŘE */
-  .form-group {
-    grid-template-columns: 1fr;
-  }
+    .meta-item {
+        width: 45%; /* Prvky v info liště 2 a 2 */
+    }
 
-  .contact-container {
-    padding: 40px 20px;
-  }
-}
+    /* 7. KONTAKT A O NÁS */
+    .contact-container, .about-section, .about-content {
+        padding: 30px 20px;
+        margin: 20px 10px;
+    }
 
+    .contact-container h1, .about-content h1 {
+        font-size: 30px;
+    }
 
-/* ===== MALÉ MOBILY ===== */
-@media (max-width: 480px) {
+    .form-group {
+        grid-template-columns: 1fr; /* Jméno a email pod sebou */
+    }
 
-  .hero h1 {
-    font-size: 1.7rem;
-  }
+    /* 8. PŘIDÁNÍ RECEPTU */
+    .add-recipe-inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
 
-  .recipe-content h3 {
-    font-size: 1.15rem;
-  }
-
-  .btn-primary,
-  .btn-submit {
-    width: 100%;
-    text-align: center;
-  }
-
-  .confirmation-container {
-    padding: 30px 20px;
-  }
+    .add-recipe-text p {
+        margin: 10px auto 25px;
+    }
 }
