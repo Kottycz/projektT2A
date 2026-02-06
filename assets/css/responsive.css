@@ -138,10 +138,9 @@
     }
 
 
-    
-/* 4. MŘÍŽKA RECEPTŮ - Nízké karty pod sebou */
+ /* 4. MŘÍŽKA RECEPTŮ - Nízké karty pod sebou s info lištou */
     .recipes-grid {
-        grid-template-columns: 1fr !important; /* Recepty pod sebou pro přehlednost */
+        grid-template-columns: 1fr !important; /* Jeden recept na řádek */
         gap: 15px !important;
         padding: 0 15px !important;
     }
@@ -154,7 +153,7 @@
     }
 
     .recipe-card img {
-        height: 140px !important; /* Nižší obrázek, aby karta nebyla obří */
+        height: 140px !important; /* Nižší obrázek pro úsporu místa */
         object-fit: cover !important;
     }
 
@@ -163,16 +162,31 @@
     }
 
     .recipe-card-content h3 {
-        font-size: 16px !important; /* Čitelný, ale ne zbytečně velký název */
-        height: auto !important;
-        margin: 0 !important;
-        line-height: 1.3 !important;
+        font-size: 17px !important; /* Výraznější název */
+        margin-bottom: 6px !important;
+        line-height: 1.2 !important;
     }
 
-    /* ÚPLNÉ ODSTRANĚNÍ TEXTU A INFO - Klíč k nízké kartě */
-    .recipe-card-content p, 
-    .recipe-meta {
+    /* Popis schováme, aby karta nebyla vysoká */
+    .recipe-card-content p {
         display: none !important; 
+    }
+
+    /* INFO LIŠTA - Čas, porce a náročnost v jedné lince */
+    .recipe-meta {
+        display: flex !important; /* Znovu zapnuto */
+        gap: 12px !important;
+        font-size: 12px !important;
+        color: #666 !important;
+        border-top: 1px solid #eee !important;
+        padding-top: 8px !important;
+        margin-top: 5px !important;
+    }
+
+    .recipe-meta span {
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
     }
 
     /* 5. KATEGORIE - Kompaktní čtverce */
@@ -183,7 +197,7 @@
     }
 
     .recipe-category {
-        height: 100px !important; /* Nízké kategorie pro rychlé scrollování */
+        height: 100px !important;
         border-radius: 12px !important;
     }
 
@@ -199,7 +213,7 @@
     }
 
     .recipe-image-wrapper {
-        height: 200px !important; /* Kompaktnější foto v detailu */
+        height: 200px !important;
     }
 
     .recipe-meta-strip {
@@ -208,7 +222,7 @@
     }
 
     .meta-item {
-        width: 47% !important; /* Info boxy 2 a 2 */
+        width: 47% !important;
         font-size: 13px !important;
     }
 
