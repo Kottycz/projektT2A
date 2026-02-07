@@ -21,12 +21,6 @@
   background-size: cover;       /* Obrázek pokryje celou plochu, ořízne se */
   background-position: center;  /* Obrázek se vycentruje */
   background-repeat: no-repeat; /* Obrázek se nebude opakovat */
-
-  min-height: 85vh;     /* Minimální výška je 85 % výšky okna prohlížeče */
-  display: flex;        /* Aktivace Flexboxu pro zarovnání obsahu */
-  align-items: center;  /* Zarovnání obsahu vertikálně na střed */
-  padding: 0 8%;        /* Vnitřní odsazení: 0 shora/zdola, 8 % zleva/zprava */
-  position: relative;   /* Nutné pro pozicování tmavého překryvu (overlay) */
 }
 
 /* Tmavý překryv přes obrázek pro lepší čitelnost textu */
@@ -39,7 +33,6 @@
 
 .hero-content {
   position: relative;   /* Aby byl text nad tmavou vrstvou (z-index) */
-  max-width: 600px;     /* Maximální šířka textového bloku */
   color: rgb(255, 255, 255); /* Bílá barva textu */
 }
 
@@ -79,11 +72,6 @@
    3. HERO SEARCH (VYHLEDÁVÁNÍ V BANNERU)
    ========================================= */
 
-.hero-search {
-  margin-top: 40px;     /* Odstup od textu nad tím */
-  display: flex;        /* Flexbox pro centrování */
-  justify-content: center; /* Vycentrování horizontálně */
-}
 
 .hero-search-box {
   display: flex;        /* Flexbox pro řazení inputu a tlačítka vedle sebe */
@@ -129,52 +117,12 @@
 }
 
 /* =========================================
-   4. OBECNÉ STYLY PRO RECEPTY (STARŠÍ DEFINICE)
-   ========================================= */
-
-.recipes {
-    display: grid;      /* Grid layout */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Responsivní sloupce */
-    gap: 20px;          /* Mezery mezi kartami */
-    margin-top: 20px;   /* Odstup shora */
-}
-
-.recipe-card {
-    background: white;  /* Bílé pozadí karty */
-    border-radius: 10px;/* Zaoblené rohy */
-    overflow: hidden;   /* Co přečuhuje (např. rohy obrázku), se skryje */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Jemný stín */
-}
-
-.recipe-card img {
-    height: 180px;      /* Fixní výška obrázku */
-    object-fit: cover;  /* Obrázek vyplní plochu bez deformace */
-}
-
-.recipe-card a,
-.btn {
-    display: block;     /* Odkaz jako blok (přes celou šířku) */
-    background: var(--primary); /* Použití proměnné (pokud je definována) */
-    color: white;       /* Bílý text */
-    text-align: center; /* Zarovnání textu na střed */
-    padding: 12px;      /* Vnitřní odsazení */
-    text-decoration: none; /* Bez podtržení */
-}
-
-.recipe-card a:hover,
-.btn:hover {
-    background: var(--primary-dark); /* Ztmavnutí při najetí (pokud je proměnná) */
-}
-
-/* =========================================
    5. SEKCE "DOPORUČENÉ RECEPTY"
    ========================================= */
 
 .recommended-label {
     width: 100%;            /* Šířka přes celou obrazovku */
     background: #f5f5f5;    /* Světle šedé pozadí */
-    padding: 80px 0 20px 0; /* Horní odsazení (mezera od sekce nad tím) */
-    text-align: center;     /* Zarovnání textu na střed */
 }
 
 .recommended-label h2 {
@@ -191,11 +139,7 @@
     margin: 0 auto;         /* Vycentrování bloku textu */
 }
 
-.recommended {
-  max-width: 1200px;    /* Maximální šířka obsahu */
-  margin: 80px auto;    /* Centrování na střed stránky */
-  padding: 0 20px;      /* Odsazení od krajů na mobilech */
-}
+
 
 .recommended h2 {
   text-align: center;   /* Zarovnání nadpisu */
@@ -208,16 +152,6 @@
   color: #666;          /* Šedá barva */
   margin-bottom: 50px;  /* Velká mezera pod podnadpisem */
 }
-
-.recipes-grid {
-    display: grid;      /* Grid systém */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivní sloupce */
-    gap: 30px;          /* Mezera mezi kartami */
-    max-width: 1200px;  /* Maximální šířka gridu */
-    margin: 0 auto 50px auto; /* Vycentrování a spodní odsazení */
-    padding: 0 20px;    /* Boční padding */
-}
-
 /* Styl karty v doporučených */
 .recipe-card {
   background: #fff;
@@ -290,11 +224,7 @@ a {
 
 /* Hlavní kontejner sekce - pás přes celou šířku */
 .recipe-categories {
-  width: 100% !important;
-  max-width: none !important; /* Zrušení omezení šířky */
   background: #f3ece2 !important; /* Béžové pozadí */
-  margin: 120px 0 !important;
-  padding: 80px 0 !important;
   display: block !important;
   position: relative;
   left: 0;
@@ -308,15 +238,7 @@ a {
   font-size: 34px;
 }
 
-/* Mřížka s kartami uprostřed bílého pásu */
-.recipe-categories-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr); /* 3 sloupce */
-  gap: 30px;
-  max-width: 1200px;      /* Omezení šířky obsahu */
-  margin: 0 auto !important; /* Vycentrování gridu */
-  padding: 0 20px;
-}
+
 
 /* Karta kategorie */
 .recipe-category {
@@ -396,22 +318,9 @@ a {
    7. CTA SEKCE (PŘIDAT RECEPT)
    ========================================= */
 
-.add-recipe-cta {
-  width: 100%;          /* Plná šířka */
+.add-recipe-cta {      /* Plná šířka */
   background: #f6f6f4;  /* Světle šedé pozadí */
-  padding: 100px 0;     /* Vysoké vnitřní odsazení */
 }
-
-.add-recipe-inner {
-  max-width: 1300px;    /* Šířka obsahu */
-  margin: 0 auto;       /* Centrování */
-  padding: 0 40px;
-  display: flex;        /* Text vlevo, tlačítko vpravo */
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-}
-
 .add-recipe-text h2 {
   font-size: 32px;
   margin-bottom: 14px;
@@ -573,11 +482,12 @@ a {
     margin: 0 auto 30px auto;    /* Vycentrování obrázku a mezera pod ním */
 }
 .recipe-header h1 {
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 42px;
     font-weight: 800;
     text-align: center;
     margin-bottom: 40px;
-    color: #1a1a1a;
+    color: #333;
 }
 
 /* Obrázek receptu */
@@ -1019,4 +929,61 @@ a {
 .about-section .highlight {
     color: #e26a2c;        /* Akcentní barva */
     font-weight: 600;
+}
+
+
+
+
+
+/* =========================================
+15. STRÁNKA VYHLEDÁVÁNÍ (Vzhled jako Oblíbené)
+========================================= */
+
+
+/* Uprav začátek sekce 12 takto, aby to bralo h2 i h1 */
+.search-results-page h2, 
+.search-results-page h1 {
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-top: 100px;
+}
+/* Celý obal stránky vyhledávání */
+.search-results-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px; /* Sjednocené odsazení */
+    text-align: center;
+}
+
+/* Sjednocení fontu pro hlavní nadpis vyhledávání */
+.search-results-page h2 {
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 2.5rem;          /* Přesně podle tvého zadání */
+    color: #333;                /* Přesně podle tvého zadání */
+    margin-bottom: 10px;        
+    font-weight: 800;           /* Extra tučné */
+    text-transform: uppercase;  /* Všechna velká písmena */
+    letter-spacing: 1px;  
+    padding-top: 60px;   /* Rozestup písmen */
+}
+
+/* Styl pro popisek pod nadpisem vyhledávání */
+.search-results-page p.search-subtitle {
+    font-size: 1.1rem;          /* Přesně podle tvého zadání */
+    color: #666;                /* Přesně podle tvého zadání */
+    font-style: italic;         /* Kurzíva */
+    margin-bottom: 60px;        /* Mezera před recepty */
+}
+
+/* Mřížka receptů - musí být stejná jako u kategorií */
+.search-results-page .recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 40px;
+    text-align: left;           /* Text v kartách zůstává vlevo */
 }
