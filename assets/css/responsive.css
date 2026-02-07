@@ -29,7 +29,7 @@
     }
 
     .header .logo h1 {
-        font-size: 20px !important;
+        font-size: 23px !important;
         margin: 0 !important;
         white-space: nowrap !important;
     }
@@ -49,7 +49,7 @@
 
     .navigation ul li a {
         padding: 5px 8px !important;
-        font-size: 12px !important;
+        font-size: 14px !important;
         background: #ffffff !important;
         border-radius: 4px !important;
     }
@@ -105,6 +105,8 @@
     .hero-search-box input {
         font-size: 14px !important;
     }
+
+
 
     /* NADPISY SEKCI - Zmenšeno pro lepší proporce */
     .recommended-label {
@@ -174,10 +176,13 @@
     }
 
     .recipe-category span {
-        font-size: 14px !important;
+        font-size: 16px !important;
     }
 
     /* 6. DETAIL RECEPTU */
+    .recipe-page{
+        padding: 0px;
+    }
     .recipe-content-grid {
          grid-template-columns: 1fr !important; 
     }
@@ -192,10 +197,14 @@
     .recipe-header h1{
         font-size: 25px;
     }
-
+    
     /* 7. KONTAKT A O NÁS */
     .contact-container, .about-section { padding: 15px !important; margin: 10px !important; }
     .contact-container h1 { font-size: 22px !important; }
+
+    .contact-page {
+        padding: 0;
+    }
 
     .add-recipe-inner {
         flex-direction: column !important;
