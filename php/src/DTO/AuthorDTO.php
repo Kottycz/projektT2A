@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+readonly class AuthorDTO {
+
+	public function __construct(
+		public int $id,
+		public string $name,
+		public string $email,
+		public string $createdAt,
+	) {
+	}
+
+	/**
+	 * @param array<string, mixed> $row
+	 */
+	public static function fromRow(array $row): self {
+		return new self(
+			id: (int) $row['id'],
+			name: $row['name'],
+			email: $row['email'],
+			createdAt: $row['created_at'],
+		);
+	}
+
+}

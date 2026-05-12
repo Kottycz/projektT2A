@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="g994817e0" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c2d12"/>
+      <stop offset="100%" stop-color="#451a03"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g994817e0)"/>
+  <text x="400" y="250" text-anchor="middle" font-size="64">🍽️</text>
+  <text x="400" y="310" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="500" fill="rgba(255,255,255,0.5)" letter-spacing="2">RECEPT</text>
+  <text x="400" y="345" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="white">Svíčková</text>
+</svg>

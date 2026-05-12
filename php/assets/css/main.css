@@ -1,0 +1,12 @@
+/*
+ * Hlavní CSS soubor – importuje ostatní.
+ *
+ * Tento soubor slouží jako ukázkový základ.
+ * Nahraď ho svým vlastním CSS z 1. fáze projektu (Kottyho kuchařka).
+ */
+
+@import 'variables.css';
+@import 'base.css';
+@import 'layout.css';
+@import 'components.css';
+@import 'responsive.css';
