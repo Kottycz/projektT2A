@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-final class RecipeRepository {
+final class RecipeRepository
+{
 
 	private PDO $db;
 
@@ -10,7 +11,7 @@ final class RecipeRepository {
 	 * Společný SELECT pro všechny dotazy na recepty.
 	 * Obsahuje JOIN na kategorie a obtížnosti, takže DTO dostane i jejich názvy.
 	 */
-	private const string BASE_SELECT = '
+	private const BASE_SELECT = '
 		SELECT r.*,
 			c.name AS category_name,
 			c.slug AS category_slug,
@@ -20,7 +21,8 @@ final class RecipeRepository {
 		JOIN difficulties d ON r.difficulty_id = d.id
 	';
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->db = Database::getConnection();
 	}
 
@@ -29,7 +31,8 @@ final class RecipeRepository {
 	 *
 	 * @return list<RecipeDTO>
 	 */
-	public function getAll(): array {
+	public function getAll(): array
+	{
 		$stmt = $this->db->query(self::BASE_SELECT . ' ORDER BY r.created_at DESC');
 
 		return array_map(RecipeDTO::fromRow(...), $stmt->fetchAll());
@@ -38,7 +41,8 @@ final class RecipeRepository {
 	/**
 	 * Najde recept podle ID.
 	 */
-	public function getById(int $id): ?RecipeDTO {
+	public function getById(int $id): ?RecipeDTO
+	{
 		$stmt = $this->db->prepare(self::BASE_SELECT . ' WHERE r.id = :id');
 		$stmt->execute(['id' => $id]);
 
@@ -50,7 +54,8 @@ final class RecipeRepository {
 	/**
 	 * Najde recept podle slugu.
 	 */
-	public function getBySlug(string $slug): ?RecipeDTO {
+	public function getBySlug(string $slug): ?RecipeDTO
+	{
 		$stmt = $this->db->prepare(self::BASE_SELECT . ' WHERE r.slug = :slug');
 		$stmt->execute(['slug' => $slug]);
 
@@ -64,7 +69,8 @@ final class RecipeRepository {
 	 *
 	 * @return list<RecipeDTO>
 	 */
-	public function getByCategory(int $categoryId): array {
+	public function getByCategory(int $categoryId): array
+	{
 		$stmt = $this->db->prepare(self::BASE_SELECT . '
 			WHERE r.category_id = :categoryId
 			ORDER BY r.created_at DESC
@@ -79,7 +85,8 @@ final class RecipeRepository {
 	 *
 	 * @return list<RecipeDTO>
 	 */
-	public function getByCategorySlug(string $slug): array {
+	public function getByCategorySlug(string $slug): array
+	{
 		$stmt = $this->db->prepare(self::BASE_SELECT . '
 			WHERE c.slug = :slug
 			ORDER BY r.created_at DESC
@@ -94,7 +101,8 @@ final class RecipeRepository {
 	 *
 	 * @return list<RecipeDTO>
 	 */
-	public function getFeatured(int $limit = 6): array {
+	public function getFeatured(int $limit = 6): array
+	{
 		$stmt = $this->db->prepare(self::BASE_SELECT . '
 			WHERE r.featured = 1
 			ORDER BY r.created_at DESC
@@ -112,7 +120,8 @@ final class RecipeRepository {
 	 * @param list<int> $ids
 	 * @return list<RecipeDTO>
 	 */
-	public function getByIds(array $ids): array {
+	public function getByIds(array $ids): array
+	{
 		if ($ids === []) {
 			return [];
 		}
@@ -132,7 +141,8 @@ final class RecipeRepository {
 	 *
 	 * @return list<RecipeDTO>
 	 */
-	public function search(string $query): array {
+	public function search(string $query): array
+	{
 		$escaped = str_replace(['%', '_', '\\'], ['\\%', '\\_', '\\\\'], $query);
 		$like = '%' . $escaped . '%';
 
@@ -155,7 +165,8 @@ final class RecipeRepository {
 	 *
 	 * @return list<RecipeImageDTO>
 	 */
-	public function getImages(int $recipeId): array {
+	public function getImages(int $recipeId): array
+	{
 		$stmt = $this->db->prepare('
 			SELECT * FROM recipe_images
 			WHERE recipe_id = :recipeId
@@ -171,7 +182,8 @@ final class RecipeRepository {
 	 *
 	 * @return list<IngredientDTO>
 	 */
-	public function getIngredients(int $recipeId): array {
+	public function getIngredients(int $recipeId): array
+	{
 		$stmt = $this->db->prepare('
 			SELECT i.*, u.name AS unit_name, u.abbreviation AS unit_abbreviation
 			FROM recipe_ingredients i
@@ -189,7 +201,8 @@ final class RecipeRepository {
 	 *
 	 * @return list<RecipeStepDTO>
 	 */
-	public function getSteps(int $recipeId): array {
+	public function getSteps(int $recipeId): array
+	{
 		$stmt = $this->db->prepare('
 			SELECT * FROM recipe_steps
 			WHERE recipe_id = :recipeId
@@ -199,5 +212,4 @@ final class RecipeRepository {
 
 		return array_map(RecipeStepDTO::fromRow(...), $stmt->fetchAll());
 	}
-
 }
