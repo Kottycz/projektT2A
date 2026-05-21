@@ -207,12 +207,12 @@ echo "Jednotky vloženy.\n";
 
 // Kategorie
 $categories = [
-	['Polévky', 'polevky', 'assets/images/kategorie/polevky.svg', 'Klasické české i mezinárodní polévky pro každou příležitost.'],
-	['Hlavní jídla', 'hlavni-jidla', 'assets/images/kategorie/hlavni-jidla.svg', 'Vydatná hlavní jídla z masa, ryb i zeleniny.'],
-	['Bezmasá jídla', 'bezmasa-jidla', 'assets/images/kategorie/bezmasa.svg', 'Vegetariánské recepty bohaté na chuť i barvu.'],
-	['Saláty', 'salaty', 'assets/images/kategorie/salaty.svg', 'Lehké saláty jako příloha i samostatné jídlo.'],
-	['Moučníky', 'moucniky', 'assets/images/kategorie/moucniky.svg', 'Dorty, koláče, buchty a další sladké pokušení.'],
-	['Nápoje', 'napoje', 'assets/images/kategorie/napoje.svg', 'Domácí limonády, smoothie a teplé nápoje.'],
+	['Polévky', 'polevky', 'assets/images/polevky.jpeg', 'Klasické české i mezinárodní polévky pro každou příležitost.'],
+	['Hlavní jídla', 'hlavni-jidla', 'assets/images/hlavni-jidla.jpeg', 'Vydatná hlavní jídla z masa, ryb i zeleniny.'],
+	['Bezmasá jídla', 'bezmasa-jidla', 'assets/images/testoviny.jpg', 'Vegetariánské recepty bohaté na chuť i barvu.'],
+	['Saláty', 'salaty', 'assets/images/salaty.jpeg', 'Lehké saláty jako příloha i samostatné jídlo.'],
+	['Moučníky', 'moucniky', 'assets/images/dezerty.jpg', 'Dorty, koláče, buchty a další sladké pokušení.'],
+	['Nápoje', 'napoje', 'assets/images/snidane.jpg', 'Domácí limonády, smoothie a teplé nápoje.'],
 ];
 
 $catStmt = $db->prepare('INSERT INTO categories (name, slug, image, description) VALUES (?, ?, ?, ?)');
@@ -225,34 +225,34 @@ echo "Kategorie vloženy.\n";
 // Recepty – [category_id, difficulty_id, name, slug, description, image, prep, cook, servings, featured]
 $recipes = [
 	// Polévky (category_id = 1)
-	[1, 1, 'Česnečka', 'cesnecka', 'Tradiční česká česneková polévka s krutony a sýrem. Rychlá, voňavá a zahřeje vás v každém počasí.', 'assets/images/recepty/cesnecka.svg', 10, 20, 4, 1],
-	[1, 2, 'Kulajda', 'kulajda', 'Sametová polévka se zakysanou smetanou, vejcem a houbami. Klenot české kuchyně.', 'assets/images/recepty/kulajda.svg', 15, 30, 4, 0],
-	[1, 1, 'Bramborová polévka', 'bramboracka', 'Hustá bramboračka s kořenovou zeleninou, houbami a majoránkou.', 'assets/images/recepty/bramboracka.svg', 20, 40, 6, 1],
+	[1, 1, 'Česnečka', 'cesnecka', 'Tradiční česká česneková polévka s krutony a sýrem. Rychlá, voňavá a zahřeje vás v každém počasí.', 'assets/images/polevky.jpeg', 10, 20, 4, 1],
+	[1, 2, 'Kulajda', 'kulajda', 'Sametová polévka se zakysanou smetanou, vejcem a houbami. Klenot české kuchyně.', 'assets/images/polevky.jpeg', 15, 30, 4, 0],
+	[1, 1, 'Bramborová polévka', 'bramboracka', 'Hustá bramboračka s kořenovou zeleninou, houbami a majoránkou.', 'assets/images/polevky.jpeg', 20, 40, 6, 1],
 
 	// Hlavní jídla (category_id = 2)
-	[2, 2, 'Svíčková na smetaně', 'svickova', 'Královna české kuchyně – hovězí svíčková se smetanovou omáčkou a houskovým knedlíkem.', 'assets/images/recepty/svickova.svg', 30, 180, 6, 1],
-	[2, 1, 'Kuřecí řízek', 'kureci-rizek', 'Křupavý smažený kuřecí řízek v trojobalu. Klasika, kterou má rád každý.', 'assets/images/recepty/rizek.svg', 15, 20, 4, 1],
-	[2, 3, 'Pečená kachna se zelím', 'pecena-kachna', 'Křupavá pečená kachna se dvěma druhy zelí a karlovarským knedlíkem. Nedělní oběd jak má být.', 'assets/images/recepty/kachna.svg', 30, 150, 4, 0],
-	[2, 2, 'Špagety Bolognese', 'spagety-bolognese', 'Italská klasika – těstoviny s vydatnou rajčatovou omáčkou z mletého masa.', 'assets/images/recepty/bolognese.svg', 15, 60, 4, 1],
-	[2, 1, 'Losos pečený na másle', 'losos-pecny', 'Šťavnatý losos s citronem, máslem a čerstvým koprem. Hotové za dvacet minut.', 'assets/images/recepty/losos.svg', 10, 20, 2, 0],
+	[2, 2, 'Svíčková na smetaně', 'svickova', 'Královna české kuchyně – hovězí svíčková se smetanovou omáčkou a houskovým knedlíkem.', 'assets/images/hlavni-jidla.jpeg', 30, 180, 6, 1],
+	[2, 1, 'Kuřecí řízek', 'kureci-rizek', 'Křupavý smažený kuřecí řízek v trojobalu. Klasika, kterou má rád každý.', 'assets/images/hlavni-jidla.jpeg', 15, 20, 4, 1],
+	[2, 3, 'Pečená kachna se zelím', 'pecena-kachna', 'Křupavá pečená kachna se dvěma druhy zelí a karlovarským knedlíkem. Nedělní oběd jak má být.', 'assets/images/hlavni-jidla.jpeg', 30, 150, 4, 0],
+	[2, 2, 'Špagety Bolognese', 'spagety-bolognese', 'Italská klasika – těstoviny s vydatnou rajčatovou omáčkou z mletého masa.', 'assets/images/testoviny.jpg', 15, 60, 4, 1],
+	[2, 1, 'Losos pečený na másle', 'losos-pecny', 'Šťavnatý losos s citronem, máslem a čerstvým koprem. Hotové za dvacet minut.', 'assets/images/hlavni-jidla.jpeg', 10, 20, 2, 0],
 
 	// Bezmasá jídla (category_id = 3)
-	[3, 1, 'Rizoto s houbami', 'rizoto-s-houbami', 'Krémové rizoto z hříbků, žampionů a parmazánu. Voňavé a hřejivé.', 'assets/images/recepty/rizoto.svg', 10, 35, 4, 1],
-	[3, 2, 'Špenátové gnocchi', 'spenatove-gnocchi', 'Domácí bramborové gnocchi se špenátovým pestem a smetanou.', 'assets/images/recepty/gnocchi.svg', 30, 20, 4, 0],
-	[3, 1, 'Pečená cuketa s fetou', 'pecena-cuketa', 'Zapečená cuketa s rajčaty, olivami a sýrem feta. Lehké letní jídlo.', 'assets/images/recepty/cuketa.svg', 15, 30, 2, 0],
+	[3, 1, 'Rizoto s houbami', 'rizoto-s-houbami', 'Krémové rizoto z hříbků, žampionů a parmazánu. Voňavé a hřejivé.', 'assets/images/rizoto.jpg', 10, 35, 4, 1],
+	[3, 2, 'Špenátové gnocchi', 'spenatove-gnocchi', 'Domácí bramborové gnocchi se špenátovým pestem a smetanou.', 'assets/images/testoviny.jpg', 30, 20, 4, 0],
+	[3, 1, 'Pečená cuketa s fetou', 'pecena-cuketa', 'Zapečená cuketa s rajčaty, olivami a sýrem feta. Lehké letní jídlo.', 'assets/images/salaty.jpeg', 15, 30, 2, 0],
 
 	// Saláty (category_id = 4)
-	[4, 1, 'Caesar salát', 'caesar-salat', 'Klasický římský salát s kuřecími nudličkami, parmazánem, krutony a domácím dresinkem.', 'assets/images/recepty/caesar.svg', 20, 10, 2, 1],
-	[4, 1, 'Řecký salát', 'recky-salat', 'Svěží salát s rajčaty, okurkou, olivami, červenou cibulí a sýrem feta.', 'assets/images/recepty/recky.svg', 15, 0, 4, 0],
+	[4, 1, 'Caesar salát', 'caesar-salat', 'Klasický římský salát s kuřecími nudličkami, parmazánem, krutony a domácím dresinkem.', 'assets/images/salaty.jpeg', 20, 10, 2, 1],
+	[4, 1, 'Řecký salát', 'recky-salat', 'Svěží salát s rajčaty, okurkou, olivami, červenou cibulí a sýrem feta.', 'assets/images/recky-salat.jpg', 15, 0, 4, 0],
 
 	// Moučníky (category_id = 5)
-	[5, 2, 'Jablečný štrúdl', 'jablecny-strudl', 'Křehké tažené těsto plněné jablky, rozinkami a skořicí. Voňavý jako u babičky.', 'assets/images/recepty/strudl.svg', 30, 40, 8, 1],
-	[5, 1, 'Tvarohové buchty', 'tvarohove-buchty', 'Měkoučké buchty s tvarohovou náplní. Ideální ke kávě nebo k svačině.', 'assets/images/recepty/buchty.svg', 30, 25, 12, 0],
-	[5, 3, 'Čokoládový dort', 'cokoladovy-dort', 'Třípatrový čokoládový dort s ganache a malinami. Na slavnostní příležitosti.', 'assets/images/recepty/cokoladovy-dort.svg', 60, 40, 12, 1],
+	[5, 2, 'Jablečný štrúdl', 'jablecny-strudl', 'Křehké tažené těsto plněné jablky, rozinkami a skořicí. Voňavý jako u babičky.', 'assets/images/dezerty.jpg', 30, 40, 8, 1],
+	[5, 1, 'Tvarohové buchty', 'tvarohove-buchty', 'Měkoučké buchty s tvarohovou náplní. Ideální ke kávě nebo k svačině.', 'assets/images/snidane.jpg', 30, 25, 12, 0],
+	[5, 3, 'Čokoládový dort', 'cokoladovy-dort', 'Třípatrový čokoládový dort s ganache a malinami. Na slavnostní příležitosti.', 'assets/images/fondan.jpeg', 60, 40, 12, 1],
 
 	// Nápoje (category_id = 6)
-	[6, 1, 'Domácí limonáda', 'domaci-limonada', 'Osvěžující limonáda z citronu, máty a medu. Hotová za pět minut.', 'assets/images/recepty/limonada.svg', 5, 0, 4, 0],
-	[6, 1, 'Horká čokoláda', 'horka-cokolada', 'Hustá belgická horká čokoláda s šlehačkou. Zimní klasika.', 'assets/images/recepty/cokolada.svg', 5, 10, 2, 1],
+	[6, 1, 'Domácí limonáda', 'domaci-limonada', 'Osvěžující limonáda z citronu, máty a medu. Hotová za pět minut.', 'assets/images/snidane.jpg', 5, 0, 4, 0],
+	[6, 1, 'Horká čokoláda', 'horka-cokolada', 'Hustá belgická horká čokoláda s šlehačkou. Zimní klasika.', 'assets/images/dezerty.jpg', 5, 10, 2, 1],
 ];
 
 $recStmt = $db->prepare('
@@ -267,23 +267,7 @@ foreach ($recipes as $r) {
 echo "Recepty vloženy (" . count($recipes) . ").\n";
 
 // Obrázky receptů (galerie) – ukázkově pro pár receptů
-$images = [
-	// Česnečka (id 1)
-	[1, 'assets/images/recepty/cesnecka-2.svg', 1],
-	[1, 'assets/images/recepty/cesnecka-3.svg', 2],
-
-	// Svíčková (id 4)
-	[4, 'assets/images/recepty/svickova-2.svg', 1],
-	[4, 'assets/images/recepty/svickova-3.svg', 2],
-
-	// Špagety bolognese (id 7)
-	[7, 'assets/images/recepty/bolognese-2.svg', 1],
-	[7, 'assets/images/recepty/bolognese-3.svg', 2],
-
-	// Jablečný štrúdl (id 14)
-	[14, 'assets/images/recepty/strudl-2.svg', 1],
-	[14, 'assets/images/recepty/strudl-3.svg', 2],
-];
+$images = [];
 
 $imgStmt = $db->prepare('INSERT INTO recipe_images (recipe_id, image, sort_order) VALUES (?, ?, ?)');
 foreach ($images as $img) {

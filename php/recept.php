@@ -2,178 +2,141 @@
 
 declare(strict_types=1);
 
-/**
- * UKÁZKOVÁ STRÁNKA – detail receptu s ingrediencemi, postupem a galerií
- *
- * Co tato stránka ukazuje:
- *   - Načtení receptu podle slugu z URL (?slug=...)
- *   - Výpis ingrediencí s formátovaným množstvím a jednotkou
- *   - Výpis kroků postupu seřazených podle step_number
- *   - Galerie dalších obrázků
- *   - Přidání/odebrání z oblíbených (Post/Redirect/Get)
- *   - Ošetření stavu, kdy recept neexistuje (404)
- */
-
-// 1) Načteme všechny třídy
 require_once __DIR__ . '/src/bootstrap.php';
 
-// 2) Vytvoříme instance
 $recipeRepo = new RecipeRepository();
-$favorites = new Favorites();
+$favorites  = new Favorites();
 
-// 3) Zpracování akce "přepnout oblíbený"
+// POST: toggle oblíbeného receptu
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_favorite'])) {
-	$recipeId = (int) $_POST['recipe_id'];
-	$recipe = $recipeRepo->getById($recipeId);
+    $recipeId = (int) $_POST['recipe_id'];
+    $recipe   = $recipeRepo->getById($recipeId);
 
-	if ($recipe !== null) {
-		$favorites->toggle($recipe->id);
-	}
+    if ($recipe !== null) {
+        $wasAdded = !$favorites->contains($recipe->id);
+        $favorites->toggle($recipe->id);
 
-	header('Location: ' . $_SERVER['REQUEST_URI']);
-	exit;
+        if ($wasAdded) {
+            header('Location: oblibene-potvrzeni.php');
+        } else {
+            header('Location: ' . $_SERVER['REQUEST_URI']);
+        }
+    } else {
+        header('Location: ' . $_SERVER['REQUEST_URI']);
+    }
+    exit;
 }
 
-// 4) Načtení receptu podle slugu z URL
-$slug = trim($_GET['slug'] ?? '');
+// Načtení receptu podle slugu
+$slug   = trim($_GET['slug'] ?? '');
 $recipe = $slug !== '' ? $recipeRepo->getBySlug($slug) : null;
 
 if ($recipe === null) {
-	http_response_code(404);
-	$pageTitle = 'Recept nenalezen';
-	$favoritesCount = $favorites->count();
-	require __DIR__ . '/partials/header.php';
-	echo '<main class="container"><h1>Recept nenalezen</h1><p>Zkuste se vrátit na <a href="index.php">hlavní stránku</a>.</p></main>';
-	require __DIR__ . '/partials/footer.php';
-	exit;
+    http_response_code(404);
+    $pageTitle      = 'Recept nenalezen – Kottyho kuchařka';
+    $favoritesCount = $favorites->count();
+    require __DIR__ . '/partials/header.php';
+    echo '<main><section class="category-header"><h1>Recept nenalezen</h1><p><a href="recepty.php">Zpět na recepty →</a></p></section></main>';
+    require __DIR__ . '/partials/footer.php';
+    exit;
 }
 
-// 5) Načtení souvisejících dat
-$images = $recipeRepo->getImages($recipe->id);
-$ingredients = $recipeRepo->getIngredients($recipe->id);
-$steps = $recipeRepo->getSteps($recipe->id);
-
-// 6) Proměnné pro header
-$pageTitle = $recipe->name . ' – Kottyho kuchařka';
+$ingredients    = $recipeRepo->getIngredients($recipe->id);
+$steps          = $recipeRepo->getSteps($recipe->id);
+$isFavorite     = $favorites->contains($recipe->id);
+$pageTitle      = $recipe->name . ' – Kottyho kuchařka';
 $favoritesCount = $favorites->count();
-$isFavorite = $favorites->contains($recipe->id);
 
 ?>
 <?php require __DIR__ . '/partials/header.php'; ?>
 
-<main class="container">
-    <article class="recipe-detail">
-        <!-- Levá strana – obrázky -->
-        <div>
-            <img
-                class="recipe-detail__image"
-                src="<?= htmlspecialchars($recipe->image) ?>"
-                alt="<?= htmlspecialchars($recipe->name) ?>"
-            >
+<main class="recipe-page">
+    <article class="recipe-container">
 
-            <?php if ($images !== []): ?>
-                <div class="recipe-detail__gallery">
-                    <?php foreach ($images as $img): ?>
-                        <img
-                            src="<?= htmlspecialchars($img->image) ?>"
-                            alt="<?= htmlspecialchars($recipe->name) ?>"
-                        >
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
+        <header class="recipe-header">
+            <h1><?= htmlspecialchars($recipe->name) ?></h1>
+            <div class="recipe-image-wrapper">
+                <img src="../<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
+            </div>
+        </header>
+
+        <div class="recipe-meta-strip">
+            <div class="meta-item">
+                <span>⏱</span>
+                <p><?= htmlspecialchars($recipe->getFormattedTotalTime()) ?></p>
+            </div>
+            <div class="meta-item">
+                <span>👥</span>
+                <p><?= $recipe->servings ?> porcí</p>
+            </div>
+            <div class="meta-item">
+                <span>⭐</span>
+                <p><?= htmlspecialchars($recipe->difficultyName ?? '') ?></p>
+            </div>
+            <div class="meta-item">
+                <span>🍽</span>
+                <p><?= htmlspecialchars($recipe->categoryName ?? '') ?></p>
+            </div>
         </div>
 
-        <!-- Pravá strana – info -->
-        <div>
-            <span class="recipe-detail__category">
-                <?= htmlspecialchars($recipe->categoryName ?? '') ?>
-            </span>
-
-            <h1 class="recipe-detail__name">
-                <?= htmlspecialchars($recipe->name) ?>
-            </h1>
-
-            <p class="recipe-detail__description">
+        <?php if ($recipe->description !== ''): ?>
+            <p style="text-align:center; color:#555; font-size:1.05rem; max-width:700px; margin: 0 auto 40px auto; line-height:1.7;">
                 <?= htmlspecialchars($recipe->description) ?>
             </p>
+        <?php endif; ?>
 
-            <dl class="recipe-detail__meta">
-                <div>
-                    <dt>Příprava</dt>
-                    <dd><?= $recipe->prepTimeMinutes ?> min</dd>
-                </div>
-                <div>
-                    <dt>Vaření</dt>
-                    <dd><?= $recipe->cookTimeMinutes ?> min</dd>
-                </div>
-                <div>
-                    <dt>Celkem</dt>
-                    <dd><?= htmlspecialchars($recipe->getFormattedTotalTime()) ?></dd>
-                </div>
-                <div>
-                    <dt>Porcí</dt>
-                    <dd><?= $recipe->servings ?></dd>
-                </div>
-                <div>
-                    <dt>Obtížnost</dt>
-                    <dd><?= htmlspecialchars($recipe->difficultyName ?? '') ?></dd>
-                </div>
-            </dl>
+        <div class="recipe-content-grid">
+            <section class="ingredients">
+                <h2>Ingredience</h2>
+                <?php if ($ingredients === []): ?>
+                    <p>Recept nemá zadané suroviny.</p>
+                <?php else: ?>
+                    <ul>
+                        <?php foreach ($ingredients as $ing): ?>
+                            <li>
+                                <?php if ($ing->getFormattedAmount() !== ''): ?>
+                                    <strong><?= htmlspecialchars($ing->getFormattedAmount()) ?></strong>
+                                <?php endif; ?>
+                                <?= htmlspecialchars($ing->name) ?>
+                                <?php if ($ing->note !== ''): ?>
+                                    <em>(<?= htmlspecialchars($ing->note) ?>)</em>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </section>
 
-            <form method="post">
+            <section class="instructions">
+                <h2>Postup přípravy</h2>
+                <?php if ($steps === []): ?>
+                    <p>Recept zatím nemá zadaný postup.</p>
+                <?php else: ?>
+                    <ol>
+                        <?php foreach ($steps as $step): ?>
+                            <li><?= htmlspecialchars($step->description) ?></li>
+                        <?php endforeach; ?>
+                    </ol>
+                <?php endif; ?>
+            </section>
+        </div>
+
+        <div class="recipe-actions">
+            <form method="post" style="display:inline;">
                 <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
-                <button
-                    type="submit"
-                    name="toggle_favorite"
-                    class="recipe-detail__btn<?= $isFavorite ? ' recipe-detail__btn--active' : '' ?>"
-                >
-                    <?= $isFavorite ? '&#9829; Odebrat z oblíbených' : '&#9825; Přidat k oblíbeným' ?>
+                <button type="submit" name="toggle_favorite"
+                    style="background:<?= $isFavorite ? '#888' : '#e26a2c' ?>;color:#fff;border:none;padding:16px 35px;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.3s;">
+                    <?= $isFavorite ? '♥ Odebrat z oblíbených' : '♡ Přidat do oblíbených' ?>
                 </button>
             </form>
+            <a href="upravit-recept.php?slug=<?= urlencode($recipe->slug) ?>"
+               style="background:#fff;color:#e26a2c;border:2px solid #e26a2c;padding:14px 35px;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.3s;">
+                ✏ Upravit recept
+            </a>
+            <a href="recepty.php" class="btn-secondary">← Zpět na recepty</a>
         </div>
+
     </article>
-
-    <!-- Ingredience -->
-    <section class="recipe-ingredients">
-        <h2>Suroviny</h2>
-        <?php if ($ingredients === []): ?>
-            <p>Recept nemá zadané suroviny.</p>
-        <?php else: ?>
-            <ul>
-                <?php foreach ($ingredients as $ing): ?>
-                    <li>
-                        <span class="recipe-ingredients__amount">
-                            <?= htmlspecialchars($ing->getFormattedAmount()) ?>
-                        </span>
-                        <span class="recipe-ingredients__name">
-                            <?= htmlspecialchars($ing->name) ?>
-                        </span>
-                        <?php if ($ing->note !== ''): ?>
-                            <span class="recipe-ingredients__note">
-                                (<?= htmlspecialchars($ing->note) ?>)
-                            </span>
-                        <?php endif; ?>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
-    </section>
-
-    <!-- Postup -->
-    <section class="recipe-steps">
-        <h2>Postup přípravy</h2>
-        <?php if ($steps === []): ?>
-            <p>Recept zatím nemá zadaný postup.</p>
-        <?php else: ?>
-            <ol>
-                <?php foreach ($steps as $step): ?>
-                    <li>
-                        <?= htmlspecialchars($step->description) ?>
-                    </li>
-                <?php endforeach; ?>
-            </ol>
-        <?php endif; ?>
-    </section>
 </main>
 
 <?php require __DIR__ . '/partials/footer.php'; ?>

@@ -197,6 +197,83 @@ final class RecipeRepository
 	}
 
 	/**
+	 * Aktualizuje základní údaje receptu.
+	 */
+	public function update(
+		int $id,
+		int $categoryId,
+		int $difficultyId,
+		string $name,
+		string $description,
+		string $image,
+		int $prepTimeMinutes,
+		int $cookTimeMinutes,
+		int $servings,
+	): void {
+		$stmt = $this->db->prepare('
+			UPDATE recipes SET
+				category_id = :categoryId,
+				difficulty_id = :difficultyId,
+				name = :name,
+				description = :description,
+				image = :image,
+				prep_time_minutes = :prepTime,
+				cook_time_minutes = :cookTime,
+				servings = :servings
+			WHERE id = :id
+		');
+		$stmt->execute([
+			'id'           => $id,
+			'categoryId'   => $categoryId,
+			'difficultyId' => $difficultyId,
+			'name'         => $name,
+			'description'  => $description,
+			'image'        => $image,
+			'prepTime'     => $prepTimeMinutes,
+			'cookTime'     => $cookTimeMinutes,
+			'servings'     => $servings,
+		]);
+	}
+
+	/**
+	 * Smaže všechny ingredience receptu a vloží nové.
+	 *
+	 * @param list<string> $lines  Každý řádek = jedna ingredience
+	 */
+	public function replaceIngredients(int $recipeId, array $lines): void
+	{
+		$this->db->prepare('DELETE FROM recipe_ingredients WHERE recipe_id = :id')
+			->execute(['id' => $recipeId]);
+
+		$stmt = $this->db->prepare('
+			INSERT INTO recipe_ingredients (recipe_id, name, sort_order)
+			VALUES (:recipeId, :name, :sortOrder)
+		');
+		foreach ($lines as $i => $line) {
+			$stmt->execute(['recipeId' => $recipeId, 'name' => $line, 'sortOrder' => $i + 1]);
+		}
+	}
+
+	/**
+	 * Smaže všechny kroky receptu a vloží nové.
+	 *
+	 * @param list<string> $lines  Každý řádek = jeden krok
+	 */
+	public function replaceSteps(int $recipeId, array $lines): void
+	{
+		$this->db->prepare('DELETE FROM recipe_steps WHERE recipe_id = :id')
+			->execute(['id' => $recipeId]);
+
+		$stmt = $this->db->prepare('
+			INSERT INTO recipe_steps (recipe_id, step_number, description)
+			VALUES (:recipeId, :stepNumber, :description)
+		');
+		foreach ($lines as $i => $line) {
+			$stmt->execute(['recipeId' => $recipeId, 'stepNumber' => $i + 1, 'description' => $line]);
+		}
+	}
+
+	/**
 	 * Vrátí kroky postupu daného receptu seřazené podle čísla kroku.
 	 *
 	 * @return list<RecipeStepDTO>

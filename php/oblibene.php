@@ -38,28 +38,29 @@ $favoritesCount = $favorites->count();
     <?php else: ?>
         <section class="recipes-grid">
             <?php foreach ($recipes as $recipe): ?>
-                <div class="recipe-card-wrapper">
-                    <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>" class="recipe-card-link">
-                        <article class="recipe-card">
-                            <img src="../<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
-                            <div class="recipe-content">
-                                <h3><?= htmlspecialchars($recipe->name) ?></h3>
-                                <p><?= htmlspecialchars($recipe->description) ?></p>
-                                <div class="recipe-meta">
-                                    <span>⏱ <?= htmlspecialchars($recipe->getFormattedTotalTime()) ?></span>
-                                    <span>👥 <?= $recipe->servings ?> porcí</span>
-                                    <span>⭐ <?= htmlspecialchars($recipe->difficultyName ?? '') ?></span>
-                                </div>
-                            </div>
-                        </article>
+                <article class="recipe-card">
+                    <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>">
+                        <img src="../<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
                     </a>
-                    <form method="post" class="favorite-remove-form">
-                        <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
-                        <button type="submit" name="toggle_favorite" class="btn-remove-favorite">
-                            &#9829; Odebrat z oblíbených
-                        </button>
-                    </form>
-                </div>
+                    <div class="recipe-content">
+                        <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>" style="text-decoration:none;color:inherit;">
+                            <h3><?= htmlspecialchars($recipe->name) ?></h3>
+                            <p><?= htmlspecialchars($recipe->description) ?></p>
+                        </a>
+                        <div class="recipe-meta">
+                            <span>⏱ <?= htmlspecialchars($recipe->getFormattedTotalTime()) ?></span>
+                            <span>👥 <?= $recipe->servings ?> porcí</span>
+                            <span>⭐ <?= htmlspecialchars($recipe->difficultyName ?? '') ?></span>
+                        </div>
+                        <form method="post" style="margin-top:16px;">
+                            <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
+                            <button type="submit" name="toggle_favorite"
+                                style="background:#e26a2c;color:#fff;border:none;padding:10px 24px;border-radius:50px;font-size:0.9rem;font-weight:600;cursor:pointer;width:100%;">
+                                ♥ Odebrat z oblíbených
+                            </button>
+                        </form>
+                    </div>
+                </article>
             <?php endforeach; ?>
         </section>
     <?php endif; ?>

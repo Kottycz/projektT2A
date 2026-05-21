@@ -40,8 +40,8 @@ $favoritesCount ??= 0;
                     Oblíbené<?php if ($favoritesCount > 0): ?> <span class="header__favorites-badge"><?= $favoritesCount ?></span><?php endif; ?>
                 </a>
             </li>
-            <li><a href="../kontakt.html">Kontakt</a></li>
-            <li><a href="../o-nas.html">O nás</a></li>
+            <li><a href="kontakt.php">Kontakt</a></li>
+            <li><a href="o-nas.php">O nás</a></li>
         </ul>
     </nav>
 </header>
