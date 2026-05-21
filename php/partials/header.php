@@ -20,26 +20,28 @@ $favoritesCount ??= 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle) ?></title>
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 
 <header class="header">
-    <a href="index.php" class="header__logo">Kottyho kuchařka</a>
+    <div class="logo">
+        <img src="../assets/images/logo2.png" alt="Logo" class="logo-img">
+        <a href="index.php" class="logo-link">
+            <h1>Kottyho kuchařka</h1>
+        </a>
+    </div>
 
-    <nav class="header__nav">
-        <a href="index.php">Domů</a>
-        <a href="kategorie.php">Kategorie</a>
-        <a href="recepty.php">Recepty</a>
-        <a href="pridat-recept-1.php">Přidat recept</a>
-        <a href="o-nas.php">O nás</a>
-        <a href="kontakt.php">Kontakt</a>
+    <nav class="navigation">
+        <ul>
+            <li><a href="recepty.php">Recepty</a></li>
+            <li>
+                <a href="oblibene.php">
+                    Oblíbené<?php if ($favoritesCount > 0): ?> <span class="header__favorites-badge"><?= $favoritesCount ?></span><?php endif; ?>
+                </a>
+            </li>
+            <li><a href="../kontakt.html">Kontakt</a></li>
+            <li><a href="../o-nas.html">O nás</a></li>
+        </ul>
     </nav>
-
-    <a href="oblibene.php" class="header__favorites" title="Oblíbené recepty">
-        &#9825;
-        <?php if ($favoritesCount > 0): ?>
-            <span class="header__favorites-badge"><?= $favoritesCount ?></span>
-        <?php endif; ?>
-    </a>
 </header>

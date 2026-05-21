@@ -34,7 +34,9 @@ final class Validator {
 	 * Pole nesmí být prázdné (po oříznutí mezer).
 	 */
 	public function required(string $field, string $value, string $message): self {
-		// TODO: implementujte
+		if (trim($value) === '') {
+			$this->errors[$field] ??= $message;
+		}
 		return $this;
 	}
 
@@ -45,7 +47,9 @@ final class Validator {
 	 * Tip: použijte filter_var() s FILTER_VALIDATE_EMAIL.
 	 */
 	public function email(string $field, string $value, string $message): self {
-		// TODO: implementujte
+		if ($value !== '' && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
+			$this->errors[$field] ??= $message;
+		}
 		return $this;
 	}
 
@@ -68,7 +72,9 @@ final class Validator {
 	 * Hodnota nesmí překročit maximální délku.
 	 */
 	public function maxLength(string $field, string $value, int $max, string $message): self {
-		// TODO: implementujte
+		if ($value !== '' && mb_strlen($value) > $max) {
+			$this->errors[$field] ??= $message;
+		}
 		return $this;
 	}
 
@@ -79,7 +85,9 @@ final class Validator {
 	 * Tip: použijte filter_var() s FILTER_VALIDATE_INT a options ['min_range', 'max_range'].
 	 */
 	public function intRange(string $field, string $value, int $min, int $max, string $message): self {
-		// TODO: implementujte
+		if ($value !== '' && filter_var($value, FILTER_VALIDATE_INT, ['options' => ['min_range' => $min, 'max_range' => $max]]) === false) {
+			$this->errors[$field] ??= $message;
+		}
 		return $this;
 	}
 
@@ -90,7 +98,9 @@ final class Validator {
 	 * Tip: použijte preg_match().
 	 */
 	public function pattern(string $field, string $value, string $regex, string $message): self {
-		// TODO: implementujte
+		if ($value !== '' && !preg_match($regex, $value)) {
+			$this->errors[$field] ??= $message;
+		}
 		return $this;
 	}
 
@@ -102,7 +112,9 @@ final class Validator {
 	 * @param list<string|int> $allowed
 	 */
 	public function in(string $field, string|int $value, array $allowed, string $message): self {
-		// TODO: implementujte
+		if (!in_array($value, $allowed, true)) {
+			$this->errors[$field] ??= $message;
+		}
 		return $this;
 	}
 
@@ -110,8 +122,7 @@ final class Validator {
 	 * Jsou data validní (žádné chyby)?
 	 */
 	public function isValid(): bool {
-		// TODO: implementujte
-		return true;
+		return $this->errors === [];
 	}
 
 	/**
@@ -120,24 +131,21 @@ final class Validator {
 	 * @return array<string, string>
 	 */
 	public function getErrors(): array {
-		// TODO: implementujte
-		return [];
+		return $this->errors;
 	}
 
 	/**
 	 * Vrátí chybu pro konkrétní pole (nebo null, pokud pole nemá chybu).
 	 */
 	public function getError(string $field): ?string {
-		// TODO: implementujte
-		return null;
+		return $this->errors[$field] ?? null;
 	}
 
 	/**
 	 * Má dané pole chybu?
 	 */
 	public function hasError(string $field): bool {
-		// TODO: implementujte
-		return false;
+		return isset($this->errors[$field]);
 	}
 
 }

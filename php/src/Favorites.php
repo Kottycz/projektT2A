@@ -8,11 +8,13 @@ declare(strict_types=1);
  * Obdoba košíku z e-shopu, ale výrazně jednodušší: nesleduje množství ani varianty,
  * jen "uživatel označil tento recept jako oblíbený".
  */
-final class Favorites {
+final class Favorites
+{
 
-	private const string SESSION_KEY = 'favorites';
+	private const SESSION_KEY = 'favorites';
 
-	public function __construct() {
+	public function __construct()
+	{
 		if (session_status() === PHP_SESSION_NONE) {
 			session_start();
 		}
@@ -21,7 +23,8 @@ final class Favorites {
 	/**
 	 * Přidá recept mezi oblíbené (pokud tam ještě není).
 	 */
-	public function add(int $recipeId): void {
+	public function add(int $recipeId): void
+	{
 		$ids = $this->getIds();
 
 		if (!in_array($recipeId, $ids, true)) {
@@ -34,7 +37,8 @@ final class Favorites {
 	/**
 	 * Odebere recept z oblíbených.
 	 */
-	public function remove(int $recipeId): void {
+	public function remove(int $recipeId): void
+	{
 		$ids = array_values(array_filter(
 			$this->getIds(),
 			fn(int $id): bool => $id !== $recipeId,
@@ -46,7 +50,8 @@ final class Favorites {
 	/**
 	 * Přepne stav (přidá pokud chybí, odebere pokud je tam).
 	 */
-	public function toggle(int $recipeId): void {
+	public function toggle(int $recipeId): void
+	{
 		if ($this->contains($recipeId)) {
 			$this->remove($recipeId);
 		} else {
@@ -57,7 +62,8 @@ final class Favorites {
 	/**
 	 * Je daný recept mezi oblíbenými?
 	 */
-	public function contains(int $recipeId): bool {
+	public function contains(int $recipeId): bool
+	{
 		return in_array($recipeId, $this->getIds(), true);
 	}
 
@@ -66,7 +72,8 @@ final class Favorites {
 	 *
 	 * @return list<int>
 	 */
-	public function getIds(): array {
+	public function getIds(): array
+	{
 		$ids = $_SESSION[self::SESSION_KEY] ?? [];
 
 		// Defensivně očistíme od neceločíselných hodnot (pro případ poškozené session)
@@ -76,22 +83,24 @@ final class Favorites {
 	/**
 	 * Vrátí počet oblíbených receptů.
 	 */
-	public function count(): int {
+	public function count(): int
+	{
 		return count($this->getIds());
 	}
 
 	/**
 	 * Je seznam oblíbených prázdný?
 	 */
-	public function isEmpty(): bool {
+	public function isEmpty(): bool
+	{
 		return $this->getIds() === [];
 	}
 
 	/**
 	 * Vyprázdní seznam oblíbených.
 	 */
-	public function clear(): void {
+	public function clear(): void
+	{
 		$_SESSION[self::SESSION_KEY] = [];
 	}
-
 }

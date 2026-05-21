@@ -17,9 +17,8 @@ $isFavorite ??= false;
     <a href="recept.php?slug=<?= htmlspecialchars($recipe->slug) ?>">
         <img
             class="recipe-card__image"
-            src="<?= htmlspecialchars($recipe->image) ?>"
-            alt="<?= htmlspecialchars($recipe->name) ?>"
-        >
+            src="../<?= htmlspecialchars($recipe->image) ?>"
+            alt="<?= htmlspecialchars($recipe->name) ?>">
     </a>
 
     <div class="recipe-card__body">
@@ -51,8 +50,7 @@ $isFavorite ??= false;
         <button
             type="submit"
             name="toggle_favorite"
-            class="recipe-card__btn<?= $isFavorite ? ' recipe-card__btn--active' : '' ?>"
-        >
+            class="recipe-card__btn<?= $isFavorite ? ' recipe-card__btn--active' : '' ?>">
             <?= $isFavorite ? '&#9829; V oblíbených' : '&#9825; Přidat k oblíbeným' ?>
         </button>
     </form>
