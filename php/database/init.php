@@ -209,7 +209,7 @@ echo "Jednotky vloženy.\n";
 $categories = [
 	['Polévky', 'polevky', 'assets/images/polevky.jpeg', 'Klasické české i mezinárodní polévky pro každou příležitost.'],
 	['Hlavní jídla', 'hlavni-jidla', 'assets/images/hlavni-jidla.jpeg', 'Vydatná hlavní jídla z masa, ryb i zeleniny.'],
-	['Bezmasá jídla', 'bezmasa-jidla', 'assets/images/testoviny.jpg', 'Vegetariánské recepty bohaté na chuť i barvu.'],
+	['Těstoviny', 'testoviny', 'assets/images/testoviny.jpg', 'Těstovinové recepty od klasické bolognese po italské speciality.'],
 	['Saláty', 'salaty', 'assets/images/salaty.jpeg', 'Lehké saláty jako příloha i samostatné jídlo.'],
 	['Moučníky', 'moucniky', 'assets/images/dezerty.jpg', 'Dorty, koláče, buchty a další sladké pokušení.'],
 	['Nápoje', 'napoje', 'assets/images/snidane.jpg', 'Domácí limonády, smoothie a teplé nápoje.'],
@@ -224,35 +224,23 @@ echo "Kategorie vloženy.\n";
 
 // Recepty – [category_id, difficulty_id, name, slug, description, image, prep, cook, servings, featured]
 $recipes = [
-	// Polévky (category_id = 1)
+	// Polévky (category_id = 1) → id 1
 	[1, 1, 'Česnečka', 'cesnecka', 'Tradiční česká česneková polévka s krutony a sýrem. Rychlá, voňavá a zahřeje vás v každém počasí.', 'assets/images/polevky.jpeg', 10, 20, 4, 1],
-	[1, 2, 'Kulajda', 'kulajda', 'Sametová polévka se zakysanou smetanou, vejcem a houbami. Klenot české kuchyně.', 'assets/images/polevky.jpeg', 15, 30, 4, 0],
-	[1, 1, 'Bramborová polévka', 'bramboracka', 'Hustá bramboračka s kořenovou zeleninou, houbami a majoránkou.', 'assets/images/polevky.jpeg', 20, 40, 6, 1],
 
-	// Hlavní jídla (category_id = 2)
-	[2, 2, 'Svíčková na smetaně', 'svickova', 'Královna české kuchyně – hovězí svíčková se smetanovou omáčkou a houskovým knedlíkem.', 'assets/images/hlavni-jidla.jpeg', 30, 180, 6, 1],
+	// Hlavní jídla (category_id = 2) → id 2
 	[2, 1, 'Kuřecí řízek', 'kureci-rizek', 'Křupavý smažený kuřecí řízek v trojobalu. Klasika, kterou má rád každý.', 'assets/images/hlavni-jidla.jpeg', 15, 20, 4, 1],
-	[2, 3, 'Pečená kachna se zelím', 'pecena-kachna', 'Křupavá pečená kachna se dvěma druhy zelí a karlovarským knedlíkem. Nedělní oběd jak má být.', 'assets/images/hlavni-jidla.jpeg', 30, 150, 4, 0],
-	[2, 2, 'Špagety Bolognese', 'spagety-bolognese', 'Italská klasika – těstoviny s vydatnou rajčatovou omáčkou z mletého masa.', 'assets/images/testoviny.jpg', 15, 60, 4, 1],
-	[2, 1, 'Losos pečený na másle', 'losos-pecny', 'Šťavnatý losos s citronem, máslem a čerstvým koprem. Hotové za dvacet minut.', 'assets/images/hlavni-jidla.jpeg', 10, 20, 2, 0],
 
-	// Bezmasá jídla (category_id = 3)
-	[3, 1, 'Rizoto s houbami', 'rizoto-s-houbami', 'Krémové rizoto z hříbků, žampionů a parmazánu. Voňavé a hřejivé.', 'assets/images/rizoto.jpg', 10, 35, 4, 1],
-	[3, 2, 'Špenátové gnocchi', 'spenatove-gnocchi', 'Domácí bramborové gnocchi se špenátovým pestem a smetanou.', 'assets/images/testoviny.jpg', 30, 20, 4, 0],
-	[3, 1, 'Pečená cuketa s fetou', 'pecena-cuketa', 'Zapečená cuketa s rajčaty, olivami a sýrem feta. Lehké letní jídlo.', 'assets/images/salaty.jpeg', 15, 30, 2, 0],
+	// Těstoviny (category_id = 3) → id 3
+	[3, 2, 'Špenátové gnocchi', 'spenatove-gnocchi', 'Domácí bramborové gnocchi se špenátovým pestem a smetanou.', 'assets/images/testoviny.jpg', 30, 20, 4, 1],
 
-	// Saláty (category_id = 4)
-	[4, 1, 'Caesar salát', 'caesar-salat', 'Klasický římský salát s kuřecími nudličkami, parmazánem, krutony a domácím dresinkem.', 'assets/images/salaty.jpeg', 20, 10, 2, 1],
-	[4, 1, 'Řecký salát', 'recky-salat', 'Svěží salát s rajčaty, okurkou, olivami, červenou cibulí a sýrem feta.', 'assets/images/recky-salat.jpg', 15, 0, 4, 0],
+	// Saláty (category_id = 4) → id 4
+	[4, 1, 'Řecký salát', 'recky-salat', 'Svěží salát s rajčaty, okurkou, olivami, červenou cibulí a sýrem feta.', 'assets/images/recky-salat.jpg', 15, 0, 4, 1],
 
-	// Moučníky (category_id = 5)
+	// Moučníky (category_id = 5) → id 5
 	[5, 2, 'Jablečný štrúdl', 'jablecny-strudl', 'Křehké tažené těsto plněné jablky, rozinkami a skořicí. Voňavý jako u babičky.', 'assets/images/dezerty.jpg', 30, 40, 8, 1],
-	[5, 1, 'Tvarohové buchty', 'tvarohove-buchty', 'Měkoučké buchty s tvarohovou náplní. Ideální ke kávě nebo k svačině.', 'assets/images/snidane.jpg', 30, 25, 12, 0],
-	[5, 3, 'Čokoládový dort', 'cokoladovy-dort', 'Třípatrový čokoládový dort s ganache a malinami. Na slavnostní příležitosti.', 'assets/images/fondan.jpeg', 60, 40, 12, 1],
 
-	// Nápoje (category_id = 6)
-	[6, 1, 'Domácí limonáda', 'domaci-limonada', 'Osvěžující limonáda z citronu, máty a medu. Hotová za pět minut.', 'assets/images/snidane.jpg', 5, 0, 4, 0],
-	[6, 1, 'Horká čokoláda', 'horka-cokolada', 'Hustá belgická horká čokoláda s šlehačkou. Zimní klasika.', 'assets/images/dezerty.jpg', 5, 10, 2, 1],
+	// Nápoje (category_id = 6) → id 6
+	[6, 1, 'Domácí limonáda', 'domaci-limonada', 'Osvěžující limonáda z citronu, máty a medu. Hotová za pět minut.', 'assets/images/snidane.jpg', 5, 0, 4, 1],
 ];
 
 $recStmt = $db->prepare('
@@ -283,7 +271,6 @@ foreach ($db->query('SELECT id, name FROM units') as $row) {
 }
 
 // Ingredience – [recipe_id, name, amount, unit_name|null, note, sort_order]
-// Pro ingredience bez množství/jednotky (např. "sůl podle chuti") nech amount=null, unit=null.
 $ingredients = [
 	// Česnečka (1)
 	[1, 'česnek', 4, 'stroužek', '', 1],
@@ -295,157 +282,48 @@ $ingredients = [
 	[1, 'sůl', null, null, 'podle chuti', 7],
 	[1, 'tvrdý sýr', 50, 'gram', 'nastrouhaný', 8],
 
-	// Kulajda (2)
-	[2, 'brambory', 400, 'gram', 'na kostky', 1],
-	[2, 'sušené houby', 30, 'gram', 'namočené', 2],
-	[2, 'zakysaná smetana', 250, 'mililitr', '', 3],
-	[2, 'vejce', 4, 'kus', '', 4],
-	[2, 'kmín', 1, 'lžička', '', 5],
-	[2, 'kopr', 1, 'svazek', 'čerstvý', 6],
-	[2, 'voda', 1.5, 'litr', '', 7],
+	// Kuřecí řízek (2)
+	[2, 'kuřecí prsa', 4, 'kus', '', 1],
+	[2, 'mouka hladká', 100, 'gram', '', 2],
+	[2, 'vejce', 2, 'kus', '', 3],
+	[2, 'strouhanka', 150, 'gram', '', 4],
+	[2, 'olej na smažení', 500, 'mililitr', '', 5],
+	[2, 'citron', 1, 'kus', 'na ozdobu', 6],
 
-	// Bramboračka (3)
-	[3, 'brambory', 500, 'gram', '', 1],
-	[3, 'mrkev', 1, 'kus', '', 2],
-	[3, 'celer', 100, 'gram', '', 3],
-	[3, 'cibule', 1, 'kus', '', 4],
-	[3, 'sušené houby', 20, 'gram', '', 5],
-	[3, 'česnek', 2, 'stroužek', '', 6],
-	[3, 'majoránka', 1, 'lžička', '', 7],
+	// Špenátové gnocchi (3)
+	[3, 'brambory', 800, 'gram', 'varné typu B', 1],
+	[3, 'mouka hladká', 200, 'gram', '', 2],
+	[3, 'vejce', 1, 'kus', '', 3],
+	[3, 'čerstvý špenát', 200, 'gram', '', 4],
+	[3, 'piniové oříšky', 30, 'gram', '', 5],
+	[3, 'parmazán', 50, 'gram', '', 6],
+	[3, 'smetana', 200, 'mililitr', '', 7],
 
-	// Svíčková (4)
-	[4, 'hovězí svíčková', 1, 'kilogram', 'naložená', 1],
-	[4, 'kořenová zelenina', 500, 'gram', 'mrkev, petržel, celer', 2],
-	[4, 'cibule', 2, 'kus', '', 3],
-	[4, 'smetana ke šlehání', 250, 'mililitr', '', 4],
-	[4, 'slanina', 100, 'gram', '', 5],
-	[4, 'cukr', 2, 'lžíce', '', 6],
-	[4, 'ocet', 50, 'mililitr', '', 7],
-	[4, 'bobkový list', 3, 'kus', '', 8],
-	[4, 'nové koření', 5, 'kus', '', 9],
+	// Řecký salát (4)
+	[4, 'rajčata', 4, 'kus', '', 1],
+	[4, 'okurka salátová', 1, 'kus', '', 2],
+	[4, 'cibule červená', 1, 'kus', '', 3],
+	[4, 'olivy', 100, 'gram', 'kalamata', 4],
+	[4, 'sýr feta', 200, 'gram', '', 5],
+	[4, 'olivový olej', 4, 'lžíce', 'extra panenský', 6],
+	[4, 'oregano', 1, 'lžička', 'sušené', 7],
 
-	// Kuřecí řízek (5)
-	[5, 'kuřecí prsa', 4, 'kus', '', 1],
-	[5, 'mouka hladká', 100, 'gram', '', 2],
-	[5, 'vejce', 2, 'kus', '', 3],
-	[5, 'strouhanka', 150, 'gram', '', 4],
-	[5, 'olej na smažení', 500, 'mililitr', '', 5],
-	[5, 'citron', 1, 'kus', 'na ozdobu', 6],
+	// Jablečný štrúdl (5)
+	[5, 'listové těsto', 500, 'gram', '', 1],
+	[5, 'jablka', 1, 'kilogram', 'kyselejší odrůdy', 2],
+	[5, 'rozinky', 100, 'gram', '', 3],
+	[5, 'vlašské ořechy', 80, 'gram', 'sekané', 4],
+	[5, 'cukr', 100, 'gram', '', 5],
+	[5, 'skořice', 2, 'lžička', 'mletá', 6],
+	[5, 'máslo', 80, 'gram', 'rozpuštěné', 7],
+	[5, 'strouhanka', 4, 'lžíce', '', 8],
 
-	// Pečená kachna (6)
-	[6, 'celá kachna', 1, 'kus', 'asi 2 kg', 1],
-	[6, 'kmín', 2, 'lžíce', '', 2],
-	[6, 'česnek', 4, 'stroužek', '', 3],
-	[6, 'kysané zelí', 500, 'gram', '', 4],
-	[6, 'cibule', 1, 'kus', '', 5],
-	[6, 'sůl', null, null, 'na vetření', 6],
-
-	// Bolognese (7)
-	[7, 'špagety', 500, 'gram', '', 1],
-	[7, 'mleté hovězí', 500, 'gram', '', 2],
-	[7, 'rajčatový protlak', 2, 'lžíce', '', 3],
-	[7, 'loupaná rajčata', 400, 'gram', 'konzerva', 4],
-	[7, 'cibule', 1, 'kus', '', 5],
-	[7, 'česnek', 3, 'stroužek', '', 6],
-	[7, 'oregano', 1, 'lžička', 'sušené', 7],
-	[7, 'bazalka', 1, 'svazek', 'čerstvá', 8],
-	[7, 'parmazán', 50, 'gram', 'na podávání', 9],
-
-	// Losos (8)
-	[8, 'filé z lososa', 2, 'kus', 'asi 150 g každé', 1],
-	[8, 'máslo', 50, 'gram', '', 2],
-	[8, 'citron', 1, 'kus', '', 3],
-	[8, 'kopr', 1, 'svazek', 'čerstvý', 4],
-
-	// Rizoto s houbami (9)
-	[9, 'rýže Arborio', 300, 'gram', '', 1],
-	[9, 'směs hub', 400, 'gram', 'hříbky, žampiony', 2],
-	[9, 'cibule', 1, 'kus', 'najemno', 3],
-	[9, 'bílé víno', 100, 'mililitr', 'suché', 4],
-	[9, 'zeleninový vývar', 1, 'litr', '', 5],
-	[9, 'parmazán', 80, 'gram', 'strouhaný', 6],
-	[9, 'máslo', 30, 'gram', '', 7],
-
-	// Špenátové gnocchi (10)
-	[10, 'brambory', 800, 'gram', 'varné typu B', 1],
-	[10, 'mouka hladká', 200, 'gram', '', 2],
-	[10, 'vejce', 1, 'kus', '', 3],
-	[10, 'čerstvý špenát', 200, 'gram', '', 4],
-	[10, 'piniové oříšky', 30, 'gram', '', 5],
-	[10, 'parmazán', 50, 'gram', '', 6],
-	[10, 'smetana', 200, 'mililitr', '', 7],
-
-	// Pečená cuketa (11)
-	[11, 'cuketa', 2, 'kus', '', 1],
-	[11, 'cherry rajčata', 200, 'gram', '', 2],
-	[11, 'sýr feta', 150, 'gram', '', 3],
-	[11, 'olivy černé', 50, 'gram', '', 4],
-	[11, 'olivový olej', 3, 'lžíce', '', 5],
-	[11, 'tymián', null, null, 'snítka', 6],
-
-	// Caesar (12)
-	[12, 'římský salát', 1, 'kus', '', 1],
-	[12, 'kuřecí prsa', 300, 'gram', '', 2],
-	[12, 'parmazán', 50, 'gram', 'strouhaný + hoblinky', 3],
-	[12, 'krutony', 1, 'hrnek', '', 4],
-	[12, 'majonéza', 4, 'lžíce', '', 5],
-	[12, 'ančovičky', 4, 'kus', '', 6],
-	[12, 'česnek', 1, 'stroužek', '', 7],
-	[12, 'citron', 0.5, 'kus', 'šťáva', 8],
-
-	// Řecký (13)
-	[13, 'rajčata', 4, 'kus', '', 1],
-	[13, 'okurka salátová', 1, 'kus', '', 2],
-	[13, 'cibule červená', 1, 'kus', '', 3],
-	[13, 'olivy', 100, 'gram', 'kalamata', 4],
-	[13, 'sýr feta', 200, 'gram', '', 5],
-	[13, 'olivový olej', 4, 'lžíce', 'extra panenský', 6],
-	[13, 'oregano', 1, 'lžička', 'sušené', 7],
-
-	// Jablečný štrúdl (14)
-	[14, 'listové těsto', 500, 'gram', '', 1],
-	[14, 'jablka', 1, 'kilogram', 'kyselejší odrůdy', 2],
-	[14, 'rozinky', 100, 'gram', '', 3],
-	[14, 'vlašské ořechy', 80, 'gram', 'sekané', 4],
-	[14, 'cukr', 100, 'gram', '', 5],
-	[14, 'skořice', 2, 'lžička', 'mletá', 6],
-	[14, 'máslo', 80, 'gram', 'rozpuštěné', 7],
-	[14, 'strouhanka', 4, 'lžíce', '', 8],
-
-	// Tvarohové buchty (15)
-	[15, 'mouka hladká', 500, 'gram', '', 1],
-	[15, 'mléko', 250, 'mililitr', 'vlažné', 2],
-	[15, 'droždí', 30, 'gram', 'čerstvé', 3],
-	[15, 'cukr', 80, 'gram', '', 4],
-	[15, 'vejce', 2, 'kus', '', 5],
-	[15, 'máslo', 80, 'gram', 'rozpuštěné', 6],
-	[15, 'tvaroh', 500, 'gram', 'tučný', 7],
-	[15, 'vanilkový cukr', 1, 'lžíce', '', 8],
-
-	// Čokoládový dort (16)
-	[16, 'mouka hladká', 300, 'gram', '', 1],
-	[16, 'cukr', 250, 'gram', '', 2],
-	[16, 'kakao', 80, 'gram', '', 3],
-	[16, 'vejce', 4, 'kus', '', 4],
-	[16, 'mléko', 250, 'mililitr', '', 5],
-	[16, 'olej', 150, 'mililitr', '', 6],
-	[16, 'prášek do pečiva', 1, 'lžíce', '', 7],
-	[16, 'tmavá čokoláda', 200, 'gram', 'na ganache', 8],
-	[16, 'smetana ke šlehání', 200, 'mililitr', 'na ganache', 9],
-	[16, 'maliny', 200, 'gram', 'čerstvé', 10],
-
-	// Domácí limonáda (17)
-	[17, 'citron', 3, 'kus', '', 1],
-	[17, 'voda', 1, 'litr', 'studená', 2],
-	[17, 'med', 4, 'lžíce', '', 3],
-	[17, 'máta', 1, 'svazek', 'čerstvá', 4],
-	[17, 'led', null, null, 'na podávání', 5],
-
-	// Horká čokoláda (18)
-	[18, 'mléko', 500, 'mililitr', 'plnotučné', 1],
-	[18, 'tmavá čokoláda', 100, 'gram', '70 %', 2],
-	[18, 'cukr', 1, 'lžíce', '', 3],
-	[18, 'šlehačka', 100, 'mililitr', 'vyšlehaná', 4],
+	// Domácí limonáda (6)
+	[6, 'citron', 3, 'kus', '', 1],
+	[6, 'voda', 1, 'litr', 'studená', 2],
+	[6, 'med', 4, 'lžíce', '', 3],
+	[6, 'máta', 1, 'svazek', 'čerstvá', 4],
+	[6, 'led', null, null, 'na podávání', 5],
 ];
 
 $ingStmt = $db->prepare('
@@ -474,119 +352,37 @@ $steps = [
 	[1, 3, 'Přidejte cibuli do polévky, vmačkejte česnek, ochuťte solí a majoránkou.'],
 	[1, 4, 'Servírujte s opečenými krutony a posypte strouhaným sýrem.'],
 
-	// Kulajda (2)
-	[2, 1, 'Sušené houby namočte na 30 minut do teplé vody.'],
-	[2, 2, 'Brambory nakrájejte na kostky a uvařte ve vodě s kmínem a houbami.'],
-	[2, 3, 'Smetanu rozšlehejte s trochou mouky a polévku jí zahustěte.'],
-	[2, 4, 'Vejce uvařte naměkko nebo natvrdo, rozkrojte a vložte do talíře.'],
-	[2, 5, 'Polévku posypte čerstvým koprem a podávejte.'],
+	// Kuřecí řízek (2)
+	[2, 1, 'Kuřecí prsa naklepejte na tloušťku 1 cm.'],
+	[2, 2, 'Osolte a opepřete, obalte v mouce, rozšlehaných vejcích a strouhance.'],
+	[2, 3, 'Smažte na rozpáleném oleji asi 4 minuty z každé strany do zlatova.'],
+	[2, 4, 'Servírujte s plátkem citronu, vařenými bramborami nebo bramborovým salátem.'],
 
-	// Bramboračka (3)
-	[3, 1, 'Sušené houby namočte do teplé vody na 30 minut.'],
-	[3, 2, 'Cibuli osmahněte, přidejte nakrájenou kořenovou zeleninu a krátce orestujte.'],
-	[3, 3, 'Vsypte brambory, zalijte vodou a vařte 20 minut.'],
-	[3, 4, 'Přidejte houby i s vodou, kořenění a vařte ještě 10 minut.'],
-	[3, 5, 'Polévku zahustěte jíškou a dochuťte česnekem a majoránkou.'],
+	// Špenátové gnocchi (3)
+	[3, 1, 'Brambory uvařte ve slupce, oloupejte a prolisujte.'],
+	[3, 2, 'Smíchejte s moukou a vejcem na hladké těsto. Vyválejte válečky a krájejte na noky.'],
+	[3, 3, 'Špenát blanšírujte, rozmixujte s piniovými oříšky a parmazánem na pesto.'],
+	[3, 4, 'Gnocchi uvařte v osolené vodě – jsou hotové, když vyplavou na hladinu.'],
+	[3, 5, 'Smíchejte pesto se smetanou, přidejte gnocchi a krátce prohřejte.'],
 
-	// Svíčková (4)
-	[4, 1, 'Maso prošpikujte slaninou, osolte a opečte ze všech stran.'],
-	[4, 2, 'V kastrolu rozpusťte máslo, přidejte cibuli a zeleninu, krátce restujte.'],
-	[4, 3, 'Zalijte vývarem, přidejte koření a maso. Pečte v troubě při 160 °C 2–3 hodiny.'],
-	[4, 4, 'Maso vyjměte, zeleninu rozmixujte do hladkého omáčky.'],
-	[4, 5, 'Omáčku zjemněte smetanou, dochuťte cukrem a octem.'],
-	[4, 6, 'Podávejte s knedlíkem, brusinkami a šlehačkou.'],
+	// Řecký salát (4)
+	[4, 1, 'Rajčata a okurku nakrájejte na velké kostky.'],
+	[4, 2, 'Cibuli nakrájejte na tenká kolečka.'],
+	[4, 3, 'Vše smíchejte v míse, přidejte olivy a kostku fety.'],
+	[4, 4, 'Pokapejte olivovým olejem, posypte oreganem a osolte.'],
 
-	// Kuřecí řízek (5)
-	[5, 1, 'Kuřecí prsa naklepejte na tloušťku 1 cm.'],
-	[5, 2, 'Osolte a opepřete, obalte v mouce, rozšlehaných vejcích a strouhance.'],
-	[5, 3, 'Smažte na rozpáleném oleji asi 4 minuty z každé strany do zlatova.'],
-	[5, 4, 'Servírujte s plátkem citronu, vařenými bramborami nebo bramborovým salátem.'],
+	// Jablečný štrúdl (5)
+	[5, 1, 'Jablka oloupejte, zbavte jádřinců a nakrájejte na drobné plátky.'],
+	[5, 2, 'Smíchejte je s rozinkami, ořechy, cukrem a skořicí.'],
+	[5, 3, 'Listové těsto rozválejte, potřete máslem a posypte strouhankou.'],
+	[5, 4, 'Doprostřed vyskládejte jablkovou náplň a stočte do rolády.'],
+	[5, 5, 'Potřete máslem a pečte v troubě při 180 °C asi 40 minut.'],
+	[5, 6, 'Posypte moučkovým cukrem a podávejte mírně teplé.'],
 
-	// Pečená kachna (6)
-	[6, 1, 'Kachnu omyjte, osušte a po celém povrchu nasolte. Vetřete kmín a česnek.'],
-	[6, 2, 'Vložte do pekáče prsy dolů, podlijte vodou a pečte při 160 °C 90 minut.'],
-	[6, 3, 'Otočte na druhou stranu a pečte dalších 45 minut, podlévejte vlastní šťávou.'],
-	[6, 4, 'Mezitím dušte na cibuli zelí s trochou vody a kořením.'],
-	[6, 5, 'Kachnu nakrájejte a podávejte se zelím a knedlíkem.'],
-
-	// Bolognese (7)
-	[7, 1, 'Cibuli a česnek najemno nakrájejte a osmahněte na oleji.'],
-	[7, 2, 'Přidejte mleté maso a opékejte, dokud nezhnědne.'],
-	[7, 3, 'Vmíchejte protlak, loupaná rajčata a koření. Duste na mírném plameni 30–40 minut.'],
-	[7, 4, 'Špagety uvařte al dente podle návodu na obalu.'],
-	[7, 5, 'Servírujte s omáčkou, posypte parmazánem a bazalkou.'],
-
-	// Losos (8)
-	[8, 1, 'Filé z lososa osušte papírovým ubrouskem, osolte a opepřete.'],
-	[8, 2, 'Na pánvi rozpusťte máslo, přidejte plátky citronu.'],
-	[8, 3, 'Vložte lososa kůží dolů a pečte 4 minuty, otočte a pečte další 3 minuty.'],
-	[8, 4, 'Posypte čerstvým koprem a podávejte s vařenými brambory nebo salátem.'],
-
-	// Rizoto (9)
-	[9, 1, 'Houby očistěte, větší nakrájejte. Cibuli najemno nakrájejte.'],
-	[9, 2, 'Na másle osmahněte cibuli, přidejte rýži a krátce restujte.'],
-	[9, 3, 'Zalijte vínem a nechte odpařit. Postupně přidávejte horký vývar po naběračkách.'],
-	[9, 4, 'Po polovině doby přidejte houby a vařte do měkka rýže (asi 20 minut).'],
-	[9, 5, 'Vmíchejte parmazán a kostku másla, dochuťte solí a pepřem.'],
-
-	// Gnocchi (10)
-	[10, 1, 'Brambory uvařte ve slupce, oloupejte a prolisujte.'],
-	[10, 2, 'Smíchejte s moukou a vejcem na hladké těsto. Vyválejte válečky a krájejte na noky.'],
-	[10, 3, 'Špenát blanšírujte, rozmixujte s piniovými oříšky a parmazánem na pesto.'],
-	[10, 4, 'Gnocchi uvařte v osolené vodě – jsou hotové, když vyplavou na hladinu.'],
-	[10, 5, 'Smíchejte pesto se smetanou, přidejte gnocchi a krátce prohřejte.'],
-
-	// Pečená cuketa (11)
-	[11, 1, 'Cuketu nakrájejte na plátky asi 1 cm silné.'],
-	[11, 2, 'Naskládejte do pekáčku, prokládejte cherry rajčaty a olivami.'],
-	[11, 3, 'Posypte rozdrobenou fetou, pokapejte olivovým olejem a osypte tymiánem.'],
-	[11, 4, 'Pečte v troubě při 200 °C asi 25 minut, dokud cuketa nezměkne.'],
-
-	// Caesar (12)
-	[12, 1, 'Kuřecí prsa osolte, opepřete a opečte na pánvi. Nakrájejte na proužky.'],
-	[12, 2, 'Salát natrhejte na sousta a vložte do mísy.'],
-	[12, 3, 'Rozmixujte majonézu, ančovičky, česnek, citronovou šťávu a polovinu parmazánu na dresink.'],
-	[12, 4, 'Salát zalijte dresinkem, přidejte krutony, kuře a hoblinky parmazánu.'],
-
-	// Řecký (13)
-	[13, 1, 'Rajčata a okurku nakrájejte na velké kostky.'],
-	[13, 2, 'Cibuli nakrájejte na tenká kolečka.'],
-	[13, 3, 'Vše smíchejte v míse, přidejte olivy a kostku fety.'],
-	[13, 4, 'Pokapejte olivovým olejem, posypte oreganem a osolte.'],
-
-	// Štrúdl (14)
-	[14, 1, 'Jablka oloupejte, zbavte jádřinců a nakrájejte na drobné plátky.'],
-	[14, 2, 'Smíchejte je s rozinkami, ořechy, cukrem a skořicí.'],
-	[14, 3, 'Listové těsto rozválejte, potřete máslem a posypte strouhankou.'],
-	[14, 4, 'Doprostřed vyskládejte jablkovou náplň a stočte do rolády.'],
-	[14, 5, 'Potřete máslem a pečte v troubě při 180 °C asi 40 minut.'],
-	[14, 6, 'Posypte moučkovým cukrem a podávejte mírně teplé.'],
-
-	// Tvarohové buchty (15)
-	[15, 1, 'Z mléka, droždí, cukru a lžíce mouky připravte kvásek a nechte vzejít.'],
-	[15, 2, 'Smíchejte mouku, vejce, máslo a kvásek a vypracujte hladké těsto. Nechte kynout 1 hodinu.'],
-	[15, 3, 'Tvaroh utřete s cukrem a vanilkovým cukrem.'],
-	[15, 4, 'Z těsta vykrájejte kolečka, plňte tvarohem a zformujte buchty.'],
-	[15, 5, 'Pokládejte do vymazaného plechu, nechte ještě 20 minut kynout.'],
-	[15, 6, 'Pečte při 180 °C asi 25 minut do zlatova.'],
-
-	// Čokoládový dort (16)
-	[16, 1, 'Smíchejte suché ingredience – mouku, cukr, kakao a prášek do pečiva.'],
-	[16, 2, 'V druhé míse rozšlehejte vejce, mléko a olej. Suroviny propojte.'],
-	[16, 3, 'Těsto rozdělte do tří dortových forem (20 cm) a pečte při 175 °C 25–30 minut.'],
-	[16, 4, 'Smetanu přiveďte k varu, zalijte čokoládu a míchejte, dokud nevznikne hladká ganache.'],
-	[16, 5, 'Vychladlé korpusy plňte ganache, prokládejte malinami a obložte zbytkem ganache.'],
-	[16, 6, 'Před servírováním dort nechte vychladit alespoň 2 hodiny.'],
-
-	// Limonáda (17)
-	[17, 1, 'Z citronů vymačkejte šťávu.'],
-	[17, 2, 'Smíchejte s vodou a medem, dobře rozmíchejte.'],
-	[17, 3, 'Přidejte čerstvé lístky máty a kostky ledu. Podávejte ihned.'],
-
-	// Horká čokoláda (18)
-	[18, 1, 'Mléko ohřejte v hrnci s cukrem (nesmí se vařit).'],
-	[18, 2, 'Stáhněte z plotny, přidejte nalámanou čokoládu a metličkou rozpusťte.'],
-	[18, 3, 'Nalijte do hrnků, ozdobte šlehačkou a posypte kakaem.'],
+	// Domácí limonáda (6)
+	[6, 1, 'Z citronů vymačkejte šťávu.'],
+	[6, 2, 'Smíchejte s vodou a medem, dobře rozmíchejte.'],
+	[6, 3, 'Přidejte čerstvé lístky máty a kostky ledu. Podávejte ihned.'],
 ];
 
 $stepStmt = $db->prepare('INSERT INTO recipe_steps (recipe_id, step_number, description) VALUES (?, ?, ?)');

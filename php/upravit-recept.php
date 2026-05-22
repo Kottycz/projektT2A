@@ -134,25 +134,30 @@ $favoritesCount = $favorites->count();
                        placeholder="assets/images/nazev.jpg">
                 <small style="color:#888;">Aktuální: <?= htmlspecialchars($recipe->image) ?></small>
 
-                <label for="category_id">Kategorie *</label>
-                <select id="category_id" name="category_id" required>
-                    <?php foreach ($categories as $cat): ?>
-                        <option value="<?= $cat->id ?>"
-                            <?= (($_POST['category_id'] ?? $recipe->categoryId) == $cat->id) ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($cat->name) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-
-                <label for="difficulty_id">Obtížnost *</label>
-                <select id="difficulty_id" name="difficulty_id" required>
-                    <?php foreach ($difficulties as $diff): ?>
-                        <option value="<?= $diff->id ?>"
-                            <?= (($_POST['difficulty_id'] ?? $recipe->difficultyId) == $diff->id) ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($diff->name) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
+                <div class="form-two-col">
+                    <div>
+                        <label for="category_id">Kategorie *</label>
+                        <select id="category_id" name="category_id" required>
+                            <?php foreach ($categories as $cat): ?>
+                                <option value="<?= $cat->id ?>"
+                                    <?= (($_POST['category_id'] ?? $recipe->categoryId) == $cat->id) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($cat->name) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="difficulty_id">Obtížnost *</label>
+                        <select id="difficulty_id" name="difficulty_id" required>
+                            <?php foreach ($difficulties as $diff): ?>
+                                <option value="<?= $diff->id ?>"
+                                    <?= (($_POST['difficulty_id'] ?? $recipe->difficultyId) == $diff->id) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($diff->name) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="form-row">
                     <div>

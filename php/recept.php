@@ -130,8 +130,12 @@ $favoritesCount = $favorites->count();
                 </button>
             </form>
             <a href="upravit-recept.php?slug=<?= urlencode($recipe->slug) ?>"
-               style="background:#fff;color:#e26a2c;border:2px solid #e26a2c;padding:14px 35px;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.3s;">
+               style="background:#444;color:#fff;border:none;padding:16px 35px;border-radius:50px;font-size:1rem;font-weight:600;text-decoration:none;transition:background 0.3s;">
                 ✏ Upravit recept
+            </a>
+            <a href="smazat-recept.php?slug=<?= urlencode($recipe->slug) ?>"
+               style="background:#d32f2f;color:#fff;border:none;padding:16px 35px;border-radius:50px;font-size:1rem;font-weight:600;text-decoration:none;transition:background 0.3s;">
+                🗑 Smazat recept
             </a>
             <a href="recepty.php" class="btn-secondary">← Zpět na recepty</a>
         </div>

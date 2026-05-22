@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Přidat recept – Kuchařka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přidat recept – Kottyho kuchařka</title>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
     <header class="header">
-         <div class="logo">
-        <img src="assets/images/logo2.png" alt="Logo" class="logo-img"> 
-        <a href="index.html" class="logo-link">
-            <h1>Kottyho kuchařka</h1>
-        </a>
-    </div>
-
+        <div class="logo">
+            <img src="assets/images/logo2.png" alt="Logo" class="logo-img">
+            <a href="index.html" class="logo-link">
+                <h1>Kottyho kuchařka</h1>
+            </a>
+        </div>
         <nav class="navigation">
             <ul>
                 <li><a href="recepty.html">Recepty</a></li>
@@ -24,32 +23,90 @@
                 <li><a href="o-nas.html">O nás</a></li>
             </ul>
         </nav>
-        
     </header>
 
     <main>
-    <div class="add-recipe-container">
-        <h1>Přidat nový recept</h1>
+        <div class="add-recipe-container">
+            <h1>Přidat nový recept</h1>
 
-        <form class="recipe-form">
-            <input type="text" placeholder="Název receptu" required>
-            <textarea placeholder="Ingredience (každou na nový řádek)" required></textarea>
-            <textarea placeholder="Postup přípravy" required></textarea>
-            
-            <div class="file-input-group">
-                <label for="file-upload" class="custom-file-upload">
-                    <span class="icon"></span> Vybrat fotografii jídla
-                </label>
-                <input id="file-upload" type="file" accept="image/*" onchange="updateFileName(this)">
-                <span id="file-name" class="file-name-display">Soubor nevybrán</span>
-            </div>
+            <form class="recipe-form" action="#">
 
-            <button type="submit" class="btn-submit">Uložit recept</button>
-        </form>
-    </div>
-</main>
+                <fieldset>
+                    <legend>Základní informace</legend>
+
+                    <label for="name">Název receptu *</label>
+                    <input type="text" id="name" name="name" placeholder="Název receptu" required>
+
+                    <label for="description">Popis</label>
+                    <textarea id="description" name="description" placeholder="Krátký popis receptu"></textarea>
+
+                    <label for="image">Cesta k obrázku</label>
+                    <input type="text" id="image" name="image" placeholder="assets/images/nazev.jpg">
+                    <small>Nechej prázdné pro výchozí obrázek.</small>
+
+                    <div class="form-two-col">
+                        <div>
+                            <label for="category_id">Kategorie *</label>
+                            <select id="category_id" name="category_id" required>
+                                <option value="">– Vyberte kategorii –</option>
+                                <option value="1">Polévky</option>
+                                <option value="2">Hlavní jídla</option>
+                                <option value="3">Těstoviny</option>
+                                <option value="4">Saláty</option>
+                                <option value="5">Moučníky</option>
+                                <option value="6">Nápoje</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="difficulty_id">Obtížnost *</label>
+                            <select id="difficulty_id" name="difficulty_id" required>
+                                <option value="">– Vyberte obtížnost –</option>
+                                <option value="1">Snadné</option>
+                                <option value="2">Střední</option>
+                                <option value="3">Náročné</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div>
+                            <label for="prep_time">Příprava (min) *</label>
+                            <input type="number" id="prep_time" name="prep_time" min="1" max="600" required>
+                        </div>
+                        <div>
+                            <label for="cook_time">Vaření (min) *</label>
+                            <input type="number" id="cook_time" name="cook_time" min="0" max="600" required>
+                        </div>
+                        <div>
+                            <label for="servings">Porcí *</label>
+                            <input type="number" id="servings" name="servings" min="1" max="50" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Ingredience a postup</legend>
+
+                    <label for="ingredients">Ingredience * <small>(každou na nový řádek)</small></label>
+                    <textarea id="ingredients" name="ingredients" rows="8"
+                              placeholder="200 g mouky&#10;3 vejce&#10;100 ml mléka" required></textarea>
+
+                    <label for="steps">Postup přípravy * <small>(každý krok na nový řádek)</small></label>
+                    <textarea id="steps" name="steps" rows="8"
+                              placeholder="Smíchejte mouku s vejci.&#10;Přidejte mléko a promíchejte.&#10;Smažte na pánvi." required></textarea>
+                </fieldset>
+
+                <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                    <button type="submit" class="btn-submit">Přidat recept</button>
+                    <a href="recepty.html" class="btn-secondary" style="align-self:center;">← Zrušit</a>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
     <footer class="footer">
-        <p>© 2026 Kuchařka</p>
+        <p>© 2026 Kottyho kuchařka</p>
     </footer>
 
 </body>

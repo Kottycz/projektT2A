@@ -8,7 +8,7 @@ $recipeRepo   = new RecipeRepository();
 $categoryRepo = new CategoryRepository();
 $favorites    = new Favorites();
 
-$featured   = $recipeRepo->getFeatured(6);
+$featured   = $recipeRepo->getFeaturedHourly(6);
 $categories = $categoryRepo->getAll();
 
 $pageTitle      = 'Kottyho kuchařka';
