@@ -15,6 +15,7 @@ $difficulties = $difficultyRepo->getAll();
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_verify();
     $name        = trim($_POST['name'] ?? '');
     $description = trim($_POST['description'] ?? '');
     $image       = trim($_POST['image'] ?? '');
@@ -99,6 +100,7 @@ $favoritesCount = $favorites->count();
         <?php endif; ?>
 
         <form class="recipe-form" method="post">
+            <?= csrf_field() ?>
 
             <fieldset>
                 <legend>Základní informace</legend>

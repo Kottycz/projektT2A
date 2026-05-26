@@ -9,12 +9,14 @@ $favorites  = new Favorites();
 
 // POST: toggle oblíbeného receptu
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_favorite'])) {
+    csrf_verify();
     $recipeId = (int) $_POST['recipe_id'];
     $recipe   = $recipeRepo->getById($recipeId);
 
     if ($recipe !== null) {
         $wasAdded = !$favorites->contains($recipe->id);
         $favorites->toggle($recipe->id);
+        session_write_close();
 
         if ($wasAdded) {
             header('Location: oblibene-potvrzeni.php');
@@ -22,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_favorite'])) {
             header('Location: ' . $_SERVER['REQUEST_URI']);
         }
     } else {
+        session_write_close();
         header('Location: ' . $_SERVER['REQUEST_URI']);
     }
     exit;
@@ -123,6 +126,7 @@ $favoritesCount = $favorites->count();
 
         <div class="recipe-actions">
             <form method="post" style="display:inline;">
+                <?= csrf_field() ?>
                 <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
                 <button type="submit" name="toggle_favorite"
                     style="background:<?= $isFavorite ? '#888' : '#e26a2c' ?>;color:#fff;border:none;padding:16px 35px;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.3s;">

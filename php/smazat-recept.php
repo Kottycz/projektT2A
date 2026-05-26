@@ -17,6 +17,7 @@ if ($recipe === null) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_delete'])) {
+    csrf_verify();
     $recipeRepo->delete($recipe->id);
     header('Location: recepty.php');
     exit;
@@ -42,6 +43,7 @@ $favoritesCount = $favorites->count();
 
         <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
             <form method="post">
+                <?= csrf_field() ?>
                 <button type="submit" name="confirm_delete"
                     style="background:#d32f2f;color:#fff;border:none;padding:14px 36px;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.3s;">
                     Ano, smazat

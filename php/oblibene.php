@@ -9,10 +9,12 @@ $favorites  = new Favorites();
 
 // POST: toggle oblíbeného receptu
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_favorite'])) {
+    csrf_verify();
     $recipeId = (int) $_POST['recipe_id'];
     if ($recipeRepo->getById($recipeId) !== null) {
         $favorites->toggle($recipeId);
     }
+    session_write_close();
     header('Location: ' . $_SERVER['REQUEST_URI']);
     exit;
 }
@@ -53,6 +55,7 @@ $favoritesCount = $favorites->count();
                             <span>⭐ <?= htmlspecialchars($recipe->difficultyName ?? '') ?></span>
                         </div>
                         <form method="post" style="margin-top:16px;">
+                            <?= csrf_field() ?>
                             <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
                             <button type="submit" name="toggle_favorite"
                                 style="background:#e26a2c;color:#fff;border:none;padding:10px 24px;border-radius:50px;font-size:0.9rem;font-weight:600;cursor:pointer;width:100%;">
