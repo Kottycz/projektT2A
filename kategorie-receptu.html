@@ -1,76 +1,70 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Kuchařka</title>
-
-    <!-- CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kategorie receptů – Kottyho kuchařka</title>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
-
 <body>
 
     <header class="header">
         <div class="logo">
-        <img src="assets/images/logo2.png" alt="Logo" class="logo-img"> 
-        <a href="index.html" class="logo-link">
-            <h1>Kottyho kuchařka</h1>
-        </a>
-    </div>
-
-   <nav class="navigation">
+            <img src="assets/images/logo2.png" alt="Logo" class="logo-img">
+            <a href="index.html" class="logo-link">
+                <h1>Kottyho kuchařka</h1>
+            </a>
+        </div>
+        <nav class="navigation">
             <ul>
                 <li><a href="recepty.html">Recepty</a></li>
-                <li><a href="oblibene.html">Oblíbené</a></li>
+                <li><a href="oblibene.html">Oblíbené <span id="fav-badge" class="header__favorites-badge" style="display:none;"></span></a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
                 <li><a href="o-nas.html">O nás</a></li>
             </ul>
-    </nav>
+        </nav>
     </header>
+
     <main>
-
+        <section class="category-header">
+            <h1>Kategorie receptů</h1>
+            <p>Vyberte si kategorii a nechte se inspirovat.</p>
+        </section>
         <section class="recipe-categories">
-  <div class="recipe-categories-inner">
-
-    <h2>Kategorie receptů</h2>
-
-    <div class="recipe-categories-grid">
-      <a href="recepty-typy/polevky.html" class="recipe-category">
-        <img src="assets/images/polevky.jpeg" alt="Polévky">
-        <span>Polévky</span>
-      </a>
-
-      <a href="recepty-typy/hlavni-jidla.html" class="recipe-category">
-        <img src="assets/images/hlavni-jidla.jpeg" alt="Hlavní jídla">
-        <span>Hlavní jídla</span>
-      </a>
-
-      <a href="recepty-typy/dezerty.html" class="recipe-category">
-        <img src="assets/images/dezerty.jpg" alt="Dezerty">
-        <span>Dezerty</span>
-      </a>
-
-      <a href="recepty-typy/salaty.html" class="recipe-category">
-        <img src="assets/images/salaty.jpeg" alt="Saláty">
-        <span>Saláty</span>
-      </a>
-
-      <a href="recepty-typy/testoviny.html" class="recipe-category">
-        <img src="assets/images/testoviny.jpg" alt="Těstoviny">
-        <span>Těstoviny</span>
-      </a>
-
-      <a href="recepty-typy/snidane.html" class="recipe-category">
-        <img src="assets/images/snidane.jpg" alt="Snídaně">
-        <span>Snídaně</span>
-      </a>
-    </div>
-
-  </div>
-</section>
-        
+            <div class="recipe-categories-inner">
+                <div class="recipe-categories-grid" id="categories-grid">
+                    <p>Načítám kategorie…</p>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Kottyho kuchařka</p>
+    </footer>
+
+    <script>
+        fetch('php/api/kategorie.php')
+            .then(r => r.json())
+            .then(cats => {
+                document.getElementById('categories-grid').innerHTML = cats.map(c =>
+                    `<a href="kategorie.html?slug=${encodeURIComponent(c.slug)}" class="recipe-category">
+                        <img src="${c.image}" alt="${c.name}">
+                        <span>${c.name}</span>
+                    </a>`
+                ).join('');
+            });
+
+        fetch('php/api/oblibene.php')
+            .then(r => r.json())
+            .then(data => {
+                if (data.count > 0) {
+                    const badge = document.getElementById('fav-badge');
+                    badge.textContent = data.count;
+                    badge.style.display = '';
+                }
+            });
+    </script>
 
 </body>
 </html>

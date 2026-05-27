@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recept – Kottyho kuchařka</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="assets/images/logo2.png" alt="Logo" class="logo-img">
+            <a href="index.html" class="logo-link">
+                <h1>Kottyho kuchařka</h1>
+            </a>
+        </div>
+        <nav class="navigation">
+            <ul>
+                <li><a href="recepty.html">Recepty</a></li>
+                <li><a href="oblibene.html">Oblíbené <span id="fav-badge" class="header__favorites-badge" style="display:none;"></span></a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="o-nas.html">O nás</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="recipe-page" id="main-content">
+        <p>Načítám recept…</p>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Kottyho kuchařka</p>
+    </footer>
+
+    <script>
+        const slug      = new URLSearchParams(location.search).get('slug') ?? '';
+        let csrfToken   = '';
+        let recipeData  = null;
+
+        async function toggleFavorite() {
+            const body = new URLSearchParams({ csrf_token: csrfToken, recipe_id: recipeData.id });
+            const res  = await fetch('php/api/oblibene.php', { method: 'POST', body });
+            const data = await res.json();
+            recipeData.isFavorite = data.isFavorite;
+            updateFavButton();
+            updateBadge(data.count);
+        }
+
+        function updateFavButton() {
+            const btn = document.getElementById('btn-fav');
+            if (!btn) return;
+            btn.style.background = recipeData.isFavorite ? '#888' : '#e26a2c';
+            btn.textContent = recipeData.isFavorite ? '♥ Odebrat z oblíbených' : '♡ Přidat do oblíbených';
+        }
+
+        function updateBadge(count) {
+            const badge = document.getElementById('fav-badge');
+            badge.textContent = count;
+            badge.style.display = count > 0 ? '' : 'none';
+        }
+
+        function renderRecipe(r) {
+            document.title = r.name + ' – Kottyho kuchařka';
+
+            const ingredients = r.ingredients.map(i =>
+                `<li>${i.amount ? `<strong>${i.amount}</strong> ` : ''}${i.name}${i.note ? ` <em>(${i.note})</em>` : ''}</li>`
+            ).join('');
+
+            const steps = r.steps.map(s => `<li>${s}</li>`).join('');
+
+            document.getElementById('main-content').innerHTML = `
+                <article class="recipe-container">
+                    <header class="recipe-header">
+                        <h1>${r.name}</h1>
+                        <div class="recipe-image-wrapper">
+                            <img src="${r.image}" alt="${r.name}">
+                        </div>
+                    </header>
+
+                    <div class="recipe-meta-strip">
+                        <div class="meta-item"><span>⏱</span><p>${r.totalTime}</p></div>
+                        <div class="meta-item"><span>👥</span><p>${r.servings} porcí</p></div>
+                        <div class="meta-item"><span>⭐</span><p>${r.difficulty ?? ''}</p></div>
+                        <div class="meta-item"><span>🍽</span><p>${r.category ?? ''}</p></div>
+                    </div>
+
+                    ${r.description ? `<p style="text-align:center;color:#555;font-size:1.05rem;max-width:700px;margin:0 auto 40px auto;line-height:1.7;">${r.description}</p>` : ''}
+
+                    <div class="recipe-content-grid">
+                        <section class="ingredients">
+                            <h2>Ingredience</h2>
+                            ${r.ingredients.length ? `<ul>${ingredients}</ul>` : '<p>Recept nemá zadané suroviny.</p>'}
+                        </section>
+                        <section class="instructions">
+                            <h2>Postup přípravy</h2>
+                            ${r.steps.length ? `<ol>${steps}</ol>` : '<p>Recept zatím nemá zadaný postup.</p>'}
+                        </section>
+                    </div>
+
+                    <div class="recipe-actions">
+                        <button id="btn-fav" style="background:${r.isFavorite ? '#888' : '#e26a2c'};color:#fff;border:none;padding:16px 35px;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.3s;">
+                            ${r.isFavorite ? '♥ Odebrat z oblíbených' : '♡ Přidat do oblíbených'}
+                        </button>
+                        <a href="upravit-recept.html?slug=${encodeURIComponent(r.slug)}"
+                           style="background:#444;color:#fff;border:none;padding:16px 35px;border-radius:50px;font-size:1rem;font-weight:600;text-decoration:none;transition:background 0.3s;">
+                            ✏ Upravit recept
+                        </a>
+                        <a href="smazat-recept.html?slug=${encodeURIComponent(r.slug)}"
+                           style="background:#d32f2f;color:#fff;border:none;padding:16px 35px;border-radius:50px;font-size:1rem;font-weight:600;text-decoration:none;transition:background 0.3s;">
+                            🗑 Smazat recept
+                        </a>
+                        <a href="recepty.html" class="btn-secondary">← Zpět na recepty</a>
+                    </div>
+                </article>`;
+
+            document.getElementById('btn-fav').addEventListener('click', toggleFavorite);
+        }
+
+        if (!slug) {
+            document.getElementById('main-content').innerHTML =
+                '<section class="category-header"><h1>Recept nenalezen</h1><p><a href="recepty.html">Zpět na recepty →</a></p></section>';
+        } else {
+            Promise.all([
+                fetch('php/api/recept.php?slug=' + encodeURIComponent(slug)).then(r => r.json()),
+                fetch('php/api/csrf.php').then(r => r.json()),
+                fetch('php/api/oblibene.php').then(r => r.json()),
+            ]).then(([recipe, csrf, favData]) => {
+                csrfToken = csrf.token;
+                updateBadge(favData.count);
+
+                if (recipe.error) {
+                    document.getElementById('main-content').innerHTML =
+                        '<section class="category-header"><h1>Recept nenalezen</h1><p><a href="recepty.html">Zpět na recepty →</a></p></section>';
+                    return;
+                }
+
+                recipeData = recipe;
+                renderRecipe(recipe);
+            });
+        }
+    </script>
+
+</body>
+</html>
