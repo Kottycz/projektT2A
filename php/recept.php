@@ -46,6 +46,7 @@ if ($recipe === null) {
 
 $ingredients    = $recipeRepo->getIngredients($recipe->id);
 $steps          = $recipeRepo->getSteps($recipe->id);
+$galleryImages  = $recipeRepo->getImages($recipe->id);
 $isFavorite     = $favorites->contains($recipe->id);
 $pageTitle      = $recipe->name . ' – Kottyho kuchařka';
 $favoritesCount = $favorites->count();
@@ -61,6 +62,16 @@ $favoritesCount = $favorites->count();
             <div class="recipe-image-wrapper">
                 <img src="/<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
             </div>
+
+            <?php if ($galleryImages !== []): ?>
+            <div class="recipe-gallery">
+                <?php foreach ($galleryImages as $img): ?>
+                    <div class="recipe-gallery__item">
+                        <img src="/<?= htmlspecialchars($img->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
         </header>
 
         <div class="recipe-meta-strip">

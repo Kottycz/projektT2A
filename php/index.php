@@ -47,20 +47,7 @@ $favoritesCount = $favorites->count();
     <section class="recommended">
         <div class="recipes-grid">
             <?php foreach ($featured as $recipe): ?>
-                <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>">
-                    <article class="recipe-card">
-                        <img src="/<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
-                        <div class="recipe-content">
-                            <h3><?= htmlspecialchars($recipe->name) ?></h3>
-                            <p><?= htmlspecialchars($recipe->description) ?></p>
-                            <div class="recipe-meta">
-                                <span>⏱ <?= htmlspecialchars($recipe->getFormattedTotalTime()) ?></span>
-                                <span>👥 <?= $recipe->servings ?> porcí</span>
-                                <span>⭐ <?= htmlspecialchars($recipe->difficultyName ?? '') ?></span>
-                            </div>
-                        </div>
-                    </article>
-                </a>
+                <?php require __DIR__ . '/partials/recipe-card.php'; ?>
             <?php endforeach; ?>
         </div>
     </section>

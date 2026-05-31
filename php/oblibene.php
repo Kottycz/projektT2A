@@ -40,29 +40,7 @@ $favoritesCount = $favorites->count();
     <?php else: ?>
         <section class="recipes-grid">
             <?php foreach ($recipes as $recipe): ?>
-                <article class="recipe-card">
-                    <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>">
-                        <img src="/<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
-                    </a>
-                    <div class="recipe-content">
-                        <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>" class="recipe-card__title-link">
-                            <h3><?= htmlspecialchars($recipe->name) ?></h3>
-                            <p><?= htmlspecialchars($recipe->description) ?></p>
-                        </a>
-                        <div class="recipe-meta">
-                            <span>⏱ <?= htmlspecialchars($recipe->getFormattedTotalTime()) ?></span>
-                            <span>👥 <?= $recipe->servings ?> porcí</span>
-                            <span>⭐ <?= htmlspecialchars($recipe->difficultyName ?? '') ?></span>
-                        </div>
-                        <form method="post">
-                            <?= csrf_field() ?>
-                            <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
-                            <button type="submit" name="toggle_favorite" class="btn-remove-fav">
-                                ♥ Odebrat z oblíbených
-                            </button>
-                        </form>
-                    </div>
-                </article>
+                <?php $showRemove = true; require __DIR__ . '/partials/recipe-card.php'; ?>
             <?php endforeach; ?>
         </section>
     <?php endif; ?>

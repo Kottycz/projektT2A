@@ -503,6 +503,35 @@
     color: #333;
 }
 
+/* Galerie náhledů pod hlavním obrázkem */
+.recipe-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.recipe-gallery__item {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 2px solid transparent;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+}
+
+.recipe-gallery__item:hover {
+    border-color: #e26a2c;
+    transform: translateY(-3px);
+}
+
+.recipe-gallery__item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+}
+
 .recipe-description {
     text-align: center;
     color: #555;

@@ -7,52 +7,51 @@
  *   $recipe (RecipeDTO) – recept k zobrazení
  *
  * Volitelně:
- *   $isFavorite (bool) – zda je recept v oblíbených (pro zvýraznění srdíčka)
+ *   $showRemove (bool) – zobrazit tlačítko „Odebrat z oblíbených" (default false)
  */
 
-$isFavorite ??= false;
+$showRemove ??= false;
 
 ?>
+<?php if (!$showRemove): ?>
+<a href="recept.php?slug=<?= htmlspecialchars($recipe->slug) ?>" class="recipe-card-link">
+<?php endif; ?>
+
 <article class="recipe-card">
+    <?php if ($showRemove): ?>
     <a href="recept.php?slug=<?= htmlspecialchars($recipe->slug) ?>">
-        <img
-            class="recipe-card__image"
-            src="/<?= htmlspecialchars($recipe->image) ?>"
-            alt="<?= htmlspecialchars($recipe->name) ?>">
+    <?php endif; ?>
+    <img src="/<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
+    <?php if ($showRemove): ?>
     </a>
+    <?php endif; ?>
 
-    <div class="recipe-card__body">
-        <span class="recipe-card__category">
-            <?= htmlspecialchars($recipe->categoryName ?? '') ?>
-        </span>
+    <div class="recipe-content">
+        <?php if ($showRemove): ?>
+        <a href="recept.php?slug=<?= htmlspecialchars($recipe->slug) ?>" class="recipe-card__title-link">
+        <?php endif; ?>
+        <h3><?= htmlspecialchars($recipe->name) ?></h3>
+        <p><?= htmlspecialchars($recipe->description) ?></p>
+        <?php if ($showRemove): ?></a><?php endif; ?>
 
-        <h2 class="recipe-card__name">
-            <a href="recept.php?slug=<?= htmlspecialchars($recipe->slug) ?>">
-                <?= htmlspecialchars($recipe->name) ?>
-            </a>
-        </h2>
-
-        <div class="recipe-card__meta">
-            <span class="recipe-card__time">
-                &#9201; <?= htmlspecialchars($recipe->getFormattedTotalTime()) ?>
-            </span>
-            <span class="recipe-card__difficulty">
-                <?= htmlspecialchars($recipe->difficultyName ?? '') ?>
-            </span>
-            <span class="recipe-card__servings">
-                <?= $recipe->servings ?> porcí
-            </span>
+        <div class="recipe-meta">
+            <span>⏱ <?= htmlspecialchars($recipe->getFormattedTotalTime()) ?></span>
+            <span>👥 <?= $recipe->servings ?> porcí</span>
+            <span>⭐ <?= htmlspecialchars($recipe->difficultyName ?? '') ?></span>
         </div>
-    </div>
 
-    <form method="post" class="recipe-card__form">
-        <?= csrf_field() ?>
-        <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
-        <button
-            type="submit"
-            name="toggle_favorite"
-            class="recipe-card__btn<?= $isFavorite ? ' recipe-card__btn--active' : '' ?>">
-            <?= $isFavorite ? '&#9829; V oblíbených' : '&#9825; Přidat k oblíbeným' ?>
-        </button>
-    </form>
+        <?php if ($showRemove): ?>
+        <form method="post">
+            <?= csrf_field() ?>
+            <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
+            <button type="submit" name="toggle_favorite" class="btn-remove-fav">
+                ♥ Odebrat z oblíbených
+            </button>
+        </form>
+        <?php endif; ?>
+    </div>
 </article>
+
+<?php if (!$showRemove): ?>
+</a>
+<?php endif; ?>
