@@ -89,9 +89,9 @@ $favoritesCount = $favorites->count();
         <h1>Přidat nový recept</h1>
 
         <?php if ($errors !== []): ?>
-            <div class="form-errors" style="background:#fff0ee;border:1px solid #e26a2c;border-radius:8px;padding:16px;margin-bottom:24px;">
-                <p style="margin:0 0 8px;font-weight:600;">Opravte prosím chyby:</p>
-                <ul style="margin:0;padding-left:20px;">
+            <div class="form-errors">
+                <p>Opravte prosím chyby:</p>
+                <ul>
                     <?php foreach ($errors as $msg): ?>
                         <li><?= htmlspecialchars($msg) ?></li>
                     <?php endforeach; ?>
@@ -177,9 +177,9 @@ $favoritesCount = $favorites->count();
                           placeholder="Smíchejte mouku s vejci.&#10;Přidejte mléko a promíchejte.&#10;Smažte na pánvi." required><?= htmlspecialchars($_POST['steps'] ?? '') ?></textarea>
             </fieldset>
 
-            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+            <div class="form-actions">
                 <button type="submit" class="btn-submit">Přidat recept</button>
-                <a href="recepty.php" class="btn-secondary" style="align-self:center;">← Zrušit</a>
+                <a href="recepty.php" class="btn-secondary">← Zrušit</a>
             </div>
         </form>
     </div>

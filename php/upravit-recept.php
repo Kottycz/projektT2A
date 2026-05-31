@@ -107,9 +107,9 @@ $favoritesCount = $favorites->count();
         <h1>Upravit recept</h1>
 
         <?php if ($errors !== []): ?>
-            <div class="form-errors" style="background:#fff0ee;border:1px solid #e26a2c;border-radius:8px;padding:16px;margin-bottom:24px;">
-                <p style="margin:0 0 8px;font-weight:600;">Opravte prosím chyby:</p>
-                <ul style="margin:0;padding-left:20px;">
+            <div class="form-errors">
+                <p>Opravte prosím chyby:</p>
+                <ul>
                     <?php foreach ($errors as $msg): ?>
                         <li><?= htmlspecialchars($msg) ?></li>
                     <?php endforeach; ?>
@@ -134,7 +134,7 @@ $favoritesCount = $favorites->count();
                 <input type="text" id="image" name="image"
                        value="<?= htmlspecialchars($_POST['image'] ?? $recipe->image) ?>"
                        placeholder="assets/images/nazev.jpg">
-                <small style="color:#888;">Aktuální: <?= htmlspecialchars($recipe->image) ?></small>
+                <small class="field-hint">Aktuální: <?= htmlspecialchars($recipe->image) ?></small>
 
                 <div class="form-two-col">
                     <div>
@@ -190,9 +190,9 @@ $favoritesCount = $favorites->count();
                 <textarea id="steps" name="steps" rows="10"><?= htmlspecialchars($_POST['steps'] ?? $stepsDefault) ?></textarea>
             </fieldset>
 
-            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+            <div class="form-actions">
                 <button type="submit" class="btn-submit">Uložit změny</button>
-                <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>" class="btn-secondary" style="align-self:center;">← Zrušit</a>
+                <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>" class="btn-secondary">← Zrušit</a>
             </div>
         </form>
     </div>

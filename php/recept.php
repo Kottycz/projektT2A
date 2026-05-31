@@ -59,7 +59,7 @@ $favoritesCount = $favorites->count();
         <header class="recipe-header">
             <h1><?= htmlspecialchars($recipe->name) ?></h1>
             <div class="recipe-image-wrapper">
-                <img src="../<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
+                <img src="/<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
             </div>
         </header>
 
@@ -83,9 +83,7 @@ $favoritesCount = $favorites->count();
         </div>
 
         <?php if ($recipe->description !== ''): ?>
-            <p style="text-align:center; color:#555; font-size:1.05rem; max-width:700px; margin: 0 auto 40px auto; line-height:1.7;">
-                <?= htmlspecialchars($recipe->description) ?>
-            </p>
+            <p class="recipe-description"><?= htmlspecialchars($recipe->description) ?></p>
         <?php endif; ?>
 
         <div class="recipe-content-grid">
@@ -125,20 +123,20 @@ $favoritesCount = $favorites->count();
         </div>
 
         <div class="recipe-actions">
-            <form method="post" style="display:inline;">
+            <form method="post" class="recipe-actions__form">
                 <?= csrf_field() ?>
                 <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
                 <button type="submit" name="toggle_favorite"
-                    style="background:<?= $isFavorite ? '#888' : '#e26a2c' ?>;color:#fff;border:none;padding:16px 35px;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.3s;">
+                    class="btn-action <?= $isFavorite ? 'btn-action--gray' : 'btn-action--orange' ?>">
                     <?= $isFavorite ? '♥ Odebrat z oblíbených' : '♡ Přidat do oblíbených' ?>
                 </button>
             </form>
             <a href="upravit-recept.php?slug=<?= urlencode($recipe->slug) ?>"
-               style="background:#444;color:#fff;border:none;padding:16px 35px;border-radius:50px;font-size:1rem;font-weight:600;text-decoration:none;transition:background 0.3s;">
+               class="btn-action btn-action--dark">
                 ✏ Upravit recept
             </a>
             <a href="smazat-recept.php?slug=<?= urlencode($recipe->slug) ?>"
-               style="background:#d32f2f;color:#fff;border:none;padding:16px 35px;border-radius:50px;font-size:1rem;font-weight:600;text-decoration:none;transition:background 0.3s;">
+               class="btn-action btn-action--red">
                 🗑 Smazat recept
             </a>
             <a href="recepty.php" class="btn-secondary">← Zpět na recepty</a>

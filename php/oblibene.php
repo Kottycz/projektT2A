@@ -42,10 +42,10 @@ $favoritesCount = $favorites->count();
             <?php foreach ($recipes as $recipe): ?>
                 <article class="recipe-card">
                     <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>">
-                        <img src="../<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
+                        <img src="/<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
                     </a>
                     <div class="recipe-content">
-                        <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>" style="text-decoration:none;color:inherit;">
+                        <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>" class="recipe-card__title-link">
                             <h3><?= htmlspecialchars($recipe->name) ?></h3>
                             <p><?= htmlspecialchars($recipe->description) ?></p>
                         </a>
@@ -54,11 +54,10 @@ $favoritesCount = $favorites->count();
                             <span>👥 <?= $recipe->servings ?> porcí</span>
                             <span>⭐ <?= htmlspecialchars($recipe->difficultyName ?? '') ?></span>
                         </div>
-                        <form method="post" style="margin-top:16px;">
+                        <form method="post">
                             <?= csrf_field() ?>
                             <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
-                            <button type="submit" name="toggle_favorite"
-                                style="background:#e26a2c;color:#fff;border:none;padding:10px 24px;border-radius:50px;font-size:0.9rem;font-weight:600;cursor:pointer;width:100%;">
+                            <button type="submit" name="toggle_favorite" class="btn-remove-fav">
                                 ♥ Odebrat z oblíbených
                             </button>
                         </form>

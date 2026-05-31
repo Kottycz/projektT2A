@@ -20,13 +20,13 @@ $favoritesCount ??= 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle) ?></title>
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
 <header class="header">
     <div class="logo">
-        <img src="../assets/images/logo2.png" alt="Logo" class="logo-img">
+        <img src="assets/images/logo2.png" alt="Logo" class="logo-img">
         <a href="index.php" class="logo-link">
             <h1>Kottyho kuchařka</h1>
         </a>

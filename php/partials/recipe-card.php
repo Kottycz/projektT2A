@@ -17,7 +17,7 @@ $isFavorite ??= false;
     <a href="recept.php?slug=<?= htmlspecialchars($recipe->slug) ?>">
         <img
             class="recipe-card__image"
-            src="../<?= htmlspecialchars($recipe->image) ?>"
+            src="/<?= htmlspecialchars($recipe->image) ?>"
             alt="<?= htmlspecialchars($recipe->name) ?>">
     </a>
 
@@ -46,6 +46,7 @@ $isFavorite ??= false;
     </div>
 
     <form method="post" class="recipe-card__form">
+        <?= csrf_field() ?>
         <input type="hidden" name="recipe_id" value="<?= $recipe->id ?>">
         <button
             type="submit"

@@ -26,7 +26,7 @@ $favoritesCount = $favorites->count();
             <div class="recipe-categories-grid">
                 <?php foreach ($categories as $cat): ?>
                     <a href="kategorie.php?slug=<?= urlencode($cat->slug) ?>" class="recipe-category">
-                        <img src="../<?= htmlspecialchars($cat->image) ?>" alt="<?= htmlspecialchars($cat->name) ?>">
+                        <img src="/<?= htmlspecialchars($cat->image) ?>" alt="<?= htmlspecialchars($cat->name) ?>">
                         <span><?= htmlspecialchars($cat->name) ?></span>
                     </a>
                 <?php endforeach; ?>

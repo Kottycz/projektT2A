@@ -31,7 +31,7 @@ $favoritesCount = $favorites->count();
 <form class="hero-search" action="vyhledavani.php" method="get">
     <div class="hero-search-box">
         <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M21 21l-4.35-4.35m1.85-5.65a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M21 21l-4.35-4.35m1.85-5.65a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
         <input type="text" name="q" placeholder="Co si dnes uvaříme?" aria-label="Vyhledávání receptů">
         <button type="submit">Hledat</button>
@@ -49,7 +49,7 @@ $favoritesCount = $favorites->count();
             <?php foreach ($featured as $recipe): ?>
                 <a href="recept.php?slug=<?= urlencode($recipe->slug) ?>">
                     <article class="recipe-card">
-                        <img src="../<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
+                        <img src="/<?= htmlspecialchars($recipe->image) ?>" alt="<?= htmlspecialchars($recipe->name) ?>">
                         <div class="recipe-content">
                             <h3><?= htmlspecialchars($recipe->name) ?></h3>
                             <p><?= htmlspecialchars($recipe->description) ?></p>
@@ -72,7 +72,7 @@ $favoritesCount = $favorites->count();
         <div class="recipe-categories-grid">
             <?php foreach ($categories as $cat): ?>
                 <a href="kategorie.php?slug=<?= urlencode($cat->slug) ?>" class="recipe-category">
-                    <img src="../<?= htmlspecialchars($cat->image) ?>" alt="<?= htmlspecialchars($cat->name) ?>">
+                    <img src="/<?= htmlspecialchars($cat->image) ?>" alt="<?= htmlspecialchars($cat->name) ?>">
                     <span><?= htmlspecialchars($cat->name) ?></span>
                 </a>
             <?php endforeach; ?>
