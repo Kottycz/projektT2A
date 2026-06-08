@@ -156,21 +156,23 @@ final class RecipeRepository
 	 */
 	public function search(string $query): array
 	{
-		$escaped = str_replace(['%', '_', '\\'], ['\\%', '\\_', '\\\\'], $query);
-		$like = '%' . $escaped . '%';
+		$needle = $this->normalizeForSearch($query);
+		if ($needle === '') {
+			return [];
+		}
 
-		$stmt = $this->db->prepare(self::BASE_SELECT . "
-			WHERE r.name LIKE :q ESCAPE '\\'
-				OR r.description LIKE :q ESCAPE '\\'
-				OR EXISTS (
-					SELECT 1 FROM recipe_ingredients i
-					WHERE i.recipe_id = r.id AND i.name LIKE :q ESCAPE '\\'
-				)
-			ORDER BY r.name
-		");
-		$stmt->execute(['q' => $like]);
+		return array_values(array_filter(
+			$this->getAll(),
+			fn(RecipeDTO $r) =>
+				str_contains($this->normalizeForSearch($r->name), $needle) ||
+				str_contains($this->normalizeForSearch($r->description), $needle)
+		));
+	}
 
-		return array_map(RecipeDTO::fromRow(...), $stmt->fetchAll());
+	private function normalizeForSearch(string $text): string
+	{
+		$map = ['á'=>'a','č'=>'c','ď'=>'d','é'=>'e','ě'=>'e','í'=>'i','ň'=>'n','ó'=>'o','ř'=>'r','š'=>'s','ť'=>'t','ú'=>'u','ů'=>'u','ý'=>'y','ž'=>'z'];
+		return strtr(mb_strtolower($text, 'UTF-8'), $map);
 	}
 
 	/**
